@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -670,7 +665,7 @@ title="Print to PDF"
 <h2>Unconstrained Optimization Problems<a class="headerlink" href="#unconstrained-optimization-problems" title="Permalink to this headline">#</a></h2>
 <p>We define an optimization problem, also called <em>the objective</em> as follows.</p>
 <div class="proof definition admonition" id="objective">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span> (unconstrained optimization objective)</p>
+<p class="admonition-title"><span class="caption-number">Definition 16 </span> (unconstrained optimization objective)</p>
 <section class="definition-content" id="proof-content">
 <p>Given an <strong>objective function</strong> <span class="math notranslate nohighlight">\(f:\mathbb{R}^n\rightarrow \mathbb{R}\)</span>, the <strong>objective of an unconstrained optimization problem</strong> is:
 <div class="math notranslate nohighlight">
@@ -686,7 +681,7 @@ We say that:</p>
 </section>
 </div><p>A minimizer can be <em>local</em> or <em>global</em>. Following our analogy, the global minimizer is the lowest valley and a local minimizer can be any valley.</p>
 <div class="proof definition admonition" id="minimizers">
-<p class="admonition-title"><span class="caption-number">Definition 6 </span> (minimizers)</p>
+<p class="admonition-title"><span class="caption-number">Definition 17 </span> (minimizers)</p>
 <section class="definition-content" id="proof-content">
 <p>Given an unconstrained objective as defined above. A <strong>global minimizer</strong> is a vector <span class="math notranslate nohighlight">\(\vvec{x}^*\)</span> satisfying
 <div class="math notranslate nohighlight">
@@ -705,7 +700,7 @@ where <span class="math notranslate nohighlight">\(\mathcal{N}_\epsilon(\vvec{x}
 <section id="constrained-optimization-problems">
 <h2>Constrained Optimization Problems<a class="headerlink" href="#constrained-optimization-problems" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="constr_objective">
-<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Constrained Objective)</p>
+<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Constrained Objective)</p>
 <section class="definition-content" id="proof-content">
 <p>Given an objective function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d\rightarrow \mathbb{R}\)</span> and constraint functions <span class="math notranslate nohighlight">\(c_i,g_k:\mathbb{R}^d\rightarrow \mathbb{R}\)</span>, then  the <strong>objective</strong> of a constrained optimization problem is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -726,9 +721,9 @@ where <span class="math notranslate nohighlight">\(\mathcal{N}_\epsilon(\vvec{x}
 </ol>
 <p>Boundary minimizers can be difficult to identify because traditional methods like the First-Order Necessary Condition (FONC) do not directly apply. However, by using the Lagrangian approach, we can transform a constrained objective into an (almost) unconstrained one, making it possible to find solutions at the boundary.</p>
 <div class="proof definition admonition" id="lagrangian">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Lagrangian)</p>
+<p class="admonition-title"><span class="caption-number">Definition 19 </span> (Lagrangian)</p>
 <section class="definition-content" id="proof-content">
-<p>Given a constrained optimization objective as in <a class="reference internal" href="#constr_objective">Definition 7</a>, then  the <strong>Lagrangian function</strong> is defined as
+<p>Given a constrained optimization objective as in <a class="reference internal" href="#constr_objective">Definition 18</a>, then  the <strong>Lagrangian function</strong> is defined as
 <div class="math notranslate nohighlight">
 \[\mathcal{L}(\vvec{x},\bm\lambda,\bm\mu) = f(\vvec{x}) - \sum_{i=1}^m\bm\lambda_i c_i(\vvec{x}) - \sum_{k=1}^l\bm\mu_k g_k(\vvec{x}).\]</div>
 
@@ -737,11 +732,11 @@ The parameters <span class="math notranslate nohighlight">\(\lambda_i\in\mathbb{
 </div><p>The Lagrangian introduces an adversarial approach to handling constraints. We remove the constraints on <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, allowing us to minimize over all <span class="math notranslate nohighlight">\(\vvec{x}\in\mathbb{R}^d\)</span>, while simultaneously maximizing over the Lagrange multipliers <span class="math notranslate nohighlight">\(\bm\lambda\in\mathbb{R}^m\)</span> and <span class="math notranslate nohighlight">\(\bm\mu\geq\vvec{0}\)</span>.</p>
 <p>Imagine a scenario where you are trying to minimize the Lagrangian by adjusting <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, while an “adversary” seeks to maximize it by adjusting <span class="math notranslate nohighlight">\(\bm\lambda\)</span> and <span class="math notranslate nohighlight">\(\bm\mu\)</span>. If <span class="math notranslate nohighlight">\(\vvec{x}\)</span> lies outside the feasible set, the adversary can exploit this by driving up the Lagrangian value. For instance, if a constraint <span class="math notranslate nohighlight">\(c_i(\vvec{x})=0.1\neq 0\)</span> is unmet, the adversary could set <span class="math notranslate nohighlight">\(\lambda_i=-10000\)</span>, raising the Lagrangian by <span class="math notranslate nohighlight">\(-(-10000)\cdot 0.1=1000\)</span>.</p>
 <p>To prevent these large increases, we need to ensure <span class="math notranslate nohighlight">\(\vvec{x}\)</span> is within the feasible set, effectively limiting the adversary’s ability to inflate the Lagrangian.</p>
-<p>The Lagrangian can be used to transform the <em>primal problem</em>, which is the original unconstrained objective from <a class="reference internal" href="#constr_objective">Definition 7</a>, to the dual problem.</p>
+<p>The Lagrangian can be used to transform the <em>primal problem</em>, which is the original unconstrained objective from <a class="reference internal" href="#constr_objective">Definition 18</a>, to the dual problem.</p>
 <div class="proof definition admonition" id="dual_problem">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Dual Problem)</p>
+<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Dual Problem)</p>
 <section class="definition-content" id="proof-content">
-<p>Given a primal optimization objective as defined in <a class="reference internal" href="#constr_objective">Definition 7</a>, we define the <strong>dual objective function</strong> <span class="math notranslate nohighlight">\(\mathcal{L}_{dual}\)</span>, returning the minimum (infimum to be precise) of the Lagrangian, given any <span class="math notranslate nohighlight">\(\bm\lambda,\bm\mu\geq\vvec{0}\)</span>:
+<p>Given a primal optimization objective as defined in <a class="reference internal" href="#constr_objective">Definition 18</a>, we define the <strong>dual objective function</strong> <span class="math notranslate nohighlight">\(\mathcal{L}_{dual}\)</span>, returning the minimum (infimum to be precise) of the Lagrangian, given any <span class="math notranslate nohighlight">\(\bm\lambda,\bm\mu\geq\vvec{0}\)</span>:
 <div class="math notranslate nohighlight">
 \[\inf_{\vvec{x}\in\mathbb{R}^d}\mathcal{L}(\vvec{x},\bm\lambda,\bm\mu) = \mathcal{L}_{dual}(\bm\lambda,\bm\mu).\]</div>
  the <strong>dual optimization objective</strong> is defined as</p>

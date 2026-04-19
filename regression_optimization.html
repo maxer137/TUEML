@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -781,7 +776,7 @@ So, we have an unconstrained convex optimization problem with a smooth objective
 <h2>Getting all Regression Solvers<a class="headerlink" href="#getting-all-regression-solvers" title="Permalink to this headline">#</a></h2>
 <p>If the matrix <span class="math notranslate nohighlight">\(X^\top X\)</span> is not invertible, then we have infinitely many regression solvers. This is particularly the case when <span class="math notranslate nohighlight">\(p&gt;n\)</span>.</p>
 <div class="proof example admonition" id="example_reg_p_larger_n">
-<p class="admonition-title"><span class="caption-number">Example 17 </span> (Regression with <span class="math notranslate nohighlight">\(p&gt;n\)</span>)</p>
+<p class="admonition-title"><span class="caption-number">Example 16 </span> (Regression with <span class="math notranslate nohighlight">\(p&gt;n\)</span>)</p>
 <section class="example-content" id="proof-content">
 <p>We consider a toy regression task, where the data is given by following three data points (observations) of one feature.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D = np.array([5,3,1])
@@ -947,7 +942,7 @@ V^\top \bm\beta &amp;=  \left(\begin{array}{cc}
 </section>
 <section id="example-determination-of-regression-solvers-by-svd">
 <h2>Example Determination of Regression Solvers by SVD<a class="headerlink" href="#example-determination-of-regression-solvers-by-svd" title="Permalink to this headline">#</a></h2>
-<p>We consider again the data from <a class="reference internal" href="#example_reg_p_larger_n">Example 17</a>. Yet, instead of computing the solution by hand, we implement now a general scheme to obtain the set of regression vectors. First, we compute the SVD of the design matrix <span class="math notranslate nohighlight">\(X\)</span></p>
+<p>We consider again the data from <a class="reference internal" href="#example_reg_p_larger_n">Example 16</a>. Yet, instead of computing the solution by hand, we implement now a general scheme to obtain the set of regression vectors. First, we compute the SVD of the design matrix <span class="math notranslate nohighlight">\(X\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>

@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -848,7 +843,7 @@ The goal is to find a classifier that predicts the correct labels <span class="m
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h2>
 <p>We quickly define the most straightforward classification evaluation metrics: the <span class="math notranslate nohighlight">\(L_{01}\)</span>-loss and the accuracy. Both put into relation how many errors/correct predictions a classifier makes in a dataset.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 15 </span> (0-1 Loss)</p>
+<p class="admonition-title"><span class="caption-number">Definition 26 </span> (0-1 Loss)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a classifier <span class="math notranslate nohighlight">\(\hat{y}(\vvec{x})\)</span> returning the predicted label. We define the <strong>0-1 loss</strong> as
 <div class="math notranslate nohighlight">
@@ -860,7 +855,7 @@ The goal is to find a classifier that predicts the correct labels <span class="m
 </section>
 </div><p>The 0-1 loss indicates whether a classifier makes an error in its prediction. In contrast, the accuracy indicates how much a classifier gets right.</p>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 16 </span> (Accuracy)</p>
+<p class="admonition-title"><span class="caption-number">Definition 27 </span> (Accuracy)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a classifier <span class="math notranslate nohighlight">\(\hat{y}(\vvec{x})\)</span>returning the predicted label. the accuracy of the classifier on dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> containing <span class="math notranslate nohighlight">\(n\)</span> data points is given as</p>
 <div class="amsmath math notranslate nohighlight">
@@ -883,7 +878,7 @@ The goal is to find a classifier that predicts the correct labels <span class="m
 </section>
 </div><p>Likewise, we can define the expected prediction error for a classification problem.</p>
 <div class="proof definition admonition" id="true_classifier_error">
-<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Classifier EPE)</p>
+<p class="admonition-title"><span class="caption-number">Definition 28 </span> (Classifier EPE)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a classifier <span class="math notranslate nohighlight">\(f_\mathcal{D}:\mathbb{R}^d\rightarrow \mathbb{R}^c\)</span> that has been trained on dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.
 the Expected Prediction Error (EPE) of classifiers is the expected error</p>
@@ -901,7 +896,7 @@ the Expected Prediction Error (EPE) of classifiers is the expected error</p>
 <p>The probability of misclassification <span class="math notranslate nohighlight">\( p( y \neq \argmax_l f(\vvec{x})_l) \)</span> is also known as the risk <span class="math notranslate nohighlight">\( R(f) \)</span> of the classifier <span class="math notranslate nohighlight">\( f \)</span>.</p>
 </div>
 <div class="proof definition admonition" id="bayes_optimal_classifier">
-<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Bayes optimal classifier)</p>
+<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Bayes optimal classifier)</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Bayes classifier</strong> is the optimal classifier that minimizes the probability of misclassification</p>
 <div class="math notranslate nohighlight" id="equation-final-estimator">

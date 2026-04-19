@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -611,6 +606,21 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#euclidean-vector-spaces">
+   Euclidean Vector Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#l-p-vector-spaces">
+   L_p Vector Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-norms">
+   Matrix Norms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonal-matrices">
    Orthogonal Matrices
   </a>
@@ -635,6 +645,21 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#euclidean-vector-spaces">
+   Euclidean Vector Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#l-p-vector-spaces">
+   L_p Vector Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-norms">
+   Matrix Norms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonal-matrices">
    Orthogonal Matrices
   </a>
@@ -651,8 +676,9 @@ title="Print to PDF"
                 
   <section id="normed-vector-spaces">
 <h1>Normed Vector Spaces<a class="headerlink" href="#normed-vector-spaces" title="Permalink to this headline">#</a></h1>
+<p>In the previous section, we introduced vector spaces as algebraic structures that allow addition and scalar multiplication. We have also seen that vectors are geometric objects: their addition and scaling can be visualized by geometric properties. Another geometric property of a vector is the length, which is measured by a norm.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A normed vector space is a vector space <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> with a
 function <span class="math notranslate nohighlight">\(\lVert\cdot\rVert:\mathcal{V}\rightarrow \mathbb{R}_+\)</span>, called <strong>norm</strong>, satisfying the following properties for all <span class="math notranslate nohighlight">\(\vvec{v},\vvec{w}\in\mathcal{V}\)</span> and <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}\)</span>:</p>
@@ -663,19 +689,22 @@ function <span class="math notranslate nohighlight">\(\lVert\cdot\rVert:\mathcal
     \lVert\vvec{v}\rVert =0&amp;\Leftrightarrow \vvec{v}=\vvec{0}
 \end{align*}\]</div>
 </section>
-</div><p>The norm measures the length of vectors.</p>
+</div><section id="euclidean-vector-spaces">
+<h2>Euclidean Vector Spaces<a class="headerlink" href="#euclidean-vector-spaces" title="Permalink to this headline">#</a></h2>
+<p>A canonical way to measure the length of vectors is the Euclidean norm. This norm returns the lengths of vectors similar to what we would get when we measure the vector with a measure tape.</p>
 <div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2 </span></p>
 <section class="example-content" id="proof-content">
 <p>The <span class="math notranslate nohighlight">\(d\)</span>-dimensional Euclidean space is the space of <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> with the <strong>Euclidean norm</strong>:
 <div class="math notranslate nohighlight">
 \[\lVert \vvec{v}\lVert_2 = \lVert \vvec{v}\rVert =\sqrt{\sum_{i=1}^d v_i^2}\]</div>
 </p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-70ab4418a00f6e73a0c3f2aa44ea791424e746de.svg" alt="Figure made with TikZ" /></p>
-</div><p>The Euclidean norm computes the length of a vector by means of the Pythagorean theorem:
+</div><p>The image above shows the triangle that is defined over the vector <span class="math notranslate nohighlight">\((v_1,v_2)\)</span>. The length of the hypothenuse is defined over the lengths of legs by means of the Pythagorean theorem as:
 <div class="math notranslate nohighlight">
 \[\lVert \vvec{v}\rVert^2 = v_1^2 + v_2^2\]</div>
-</p>
+
+This is exactly what the squared Euclidean norm is returning.</p>
 </section>
 </div><p>The Euclidean norm introduces a geometric interpretation of the inner product of two vectors. The inner product is defined by the lengths of the vectors and the cosine of the angle between them.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -684,16 +713,26 @@ function <span class="math notranslate nohighlight">\(\lVert\cdot\rVert:\mathcal
     = \cos\sphericalangle(\vvec{v},\vvec{w})\lVert\vvec{v}\rVert\lVert\vvec{w}\rVert
 \end{align*}\]</div>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-657e6c19b38220849030d8731d2a20b218cd91d6.svg" alt="Figure made with TikZ" /></p>
-</div><p>In Machine Learning, the inner product is often used as a similarity measure between two points. The idea is that two points facing in the same direction have a cosine close to one, and hence a larger inner product than two points looking into distint directions.
-If two vectors are <strong>orthogonal</strong>, then <span class="math notranslate nohighlight">\(\cos\sphericalangle(\vvec{v},\vvec{w})=0\)</span> and the inner product is zero</p>
+</div><p>In Machine Learning, the inner product is often used as a similarity measure between two points. The idea is that two points facing in the same direction have a cosine close to one, and hence a larger inner product than two points looking into distint directions.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Two vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> are called <strong>orthogonal</strong> if their inner product is zero <span class="math notranslate nohighlight">\(\mathbf{v}^\top \mathbf{w}=0\)</span>.</p>
+<p>They are called <strong>orthonormal</strong> if they are orthogonal and have unit norm <span class="math notranslate nohighlight">\(\lVert \vvec{v}\rVert = \lVert\vvec{w}\rVert =1\)</span>.</p>
+</section>
+</div><p>From the definition follows that if two (nonzero) vectors are orthogonal, then they are at a right angle. The inner product is zero</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \vvec{v}^\top\vvec{w}
 &amp;= \cos\sphericalangle(\vvec{v},\vvec{w})\lVert\vvec{v}\rVert\lVert\vvec{w}\rVert =0
 \end{align*}\]</div>
-<p>Two vectors are called <strong>orthonormal</strong> if they are orthogonal and have unit norm <span class="math notranslate nohighlight">\(\lVert \vvec{v}\rVert = \lVert\vvec{w}\rVert =1\)</span>.</p>
+<p>only if <span class="math notranslate nohighlight">\(\cos\sphericalangle(\vvec{v},\vvec{w})=0\)</span>, because the norm is only zero if the vector is the zero vector. For the zero vector, we can’t really talk about an angle between it and another vector, because the zero vector has no direction. The image below shows two orthogonal vectors.</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-368fd7c8d4ab3016ac8459acb5b21d73b9fb9250.svg" alt="Figure made with TikZ" /></p>
-</div><div class="proof theorem admonition" id="theorem-2">
+</div><p>Multiplying with a norm-1 vector has a very important geometric meaning, which is used often in machine learning. Note that any vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> can be normalized to a norm-1 vector by dividing with the norm. It’s easy to show that the vector <span class="math notranslate nohighlight">\(\frac{\mathbf{w}}{\lVert \mathbf{w}\rVert}\)</span> has norm 1, because we can pull the scalar <span class="math notranslate nohighlight">\(\frac{1}{\lVert \mathbf{w}\rVert}\)</span> out of the norm due to the homogeneity:
+<div class="math notranslate nohighlight">
+\[\left\lVert\frac{\mathbf{w}}{\lVert \mathbf{w}\rVert}\right\rVert = \frac{1}{\lVert \mathbf{w}\rVert} \lVert \mathbf{w}\rVert =1.\]</div>
+</p>
+<div class="proof theorem admonition" id="theorem-3">
 <span id="lina-projection"></span><p class="admonition-title"><span class="caption-number">Theorem 2 </span></p>
 <section class="theorem-content" id="proof-content">
 <p>The inner product of a vector <span class="math notranslate nohighlight">\(\vvec{v}\)</span> and a normalized vector <span class="math notranslate nohighlight">\(\frac{\vvec{w}}{\lVert\vvec{w}\rVert}\)</span> computes the length of the <strong>projection</strong> <span class="math notranslate nohighlight">\(\vvec{p_v}\)</span> of <span class="math notranslate nohighlight">\(\vvec{v}\)</span> onto <span class="math notranslate nohighlight">\(\vvec{w}\)</span>. Using the notation of vectors from the image below, we have</p>
@@ -711,34 +750,56 @@ If two vectors are <strong>orthogonal</strong>, then <span class="math notransla
 &amp;\Leftrightarrow \lVert \vvec{p}_v\rVert =\cos(\phi)\lVert \vvec{v}\rVert =\vvec{v}^\top \frac{\vvec{w}}{\lVert \vvec{w}\rVert} 
 \end{align*}\]</div>
 </div>
-<div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (Manhattan norm)</p>
+</section>
+<section id="l-p-vector-spaces">
+<h2>L_p Vector Spaces<a class="headerlink" href="#l-p-vector-spaces" title="Permalink to this headline">#</a></h2>
+<p>The Euclidean norm is closely tied to the geometry induced by the Pythagorean theorem. However, the axioms of a norm do not require this geometric structure. They only encode a few fundamental properties of length.</p>
+<p>This flexibility allows us to define different norms that measure vectors in fundamentally different ways.</p>
+<div class="proof example admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Manhattan (or L1) norm)</p>
 <section class="example-content" id="proof-content">
 <p>The Manhattan norm is defined as:
 <div class="math notranslate nohighlight">
 \[\lVert \vvec{v}\lVert_1 = \lvert \vvec{v}\rvert =\sum_{i=1}^d \lvert v_i\rvert\]</div>
 
-The Manhattan norm computes the length of a vector coordinate-wise:
+Geometrically, this corresponds to measuring distance along coordinate axes rather than straight lines. It’s called the Manhattan norm because it measures the distance you would have to walk in the city Manhattan, having a block-wise layout.
 <div class="math notranslate nohighlight">
 \[\lvert \vvec{v}\rvert = \lvert v_1\rvert + \lvert v_2\rvert\]</div>
 </p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-70ab4418a00f6e73a0c3f2aa44ea791424e746de.svg" alt="Figure made with TikZ" /></p>
 </div></section>
-</div><div class="proof example admonition" id="example-4">
-<p class="admonition-title"><span class="caption-number">Example 5 </span> (<span class="math notranslate nohighlight">\(L_p\)</span>-norms)</p>
-<section class="example-content" id="proof-content">
-<p>For <span class="math notranslate nohighlight">\(p\in[1,\infty]\)</span>, the function <span class="math notranslate nohighlight">\(\lVert\cdot\rVert_p\)</span> is a norm, where</p>
+</div><p>Both the Euclidean norm and the Manhattan norm follow the same pattern: they combine the coordinates by taking powers, summing them, and applying a root. By allowing the exponent to vary, we obtain a unified family of norms <span class="math notranslate nohighlight">\(L_p\)</span>-norms—which generalize both.</p>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (<span class="math notranslate nohighlight">\(L_p\)</span>-norms)</p>
+<section class="definition-content" id="proof-content">
+<p>For <span class="math notranslate nohighlight">\(p \in [1,\infty)\)</span>, the <span class="math notranslate nohighlight">\(p\)</span>-norm on <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> is defined by</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \lVert \vvec{v}\lVert_p &amp; =\left(\sum_{i=1}^d \lvert v_i\rvert^p\right)^{1/p}
+    \lVert \vvec{v} \rVert_p = \left(\sum_{i=1}^d |v_i|^p\right)^{1/p}.
 \end{align*}\]</div>
+<p>For <span class="math notranslate nohighlight">\(p = \infty\)</span>, we define</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \lVert \vvec{v} \rVert_\infty = \max_{1 \le i \le d} |v_i|.
+\end{align*}\]</div>
+</section>
+</div><div class="proof proposition admonition" id="proposition-6">
+<p class="admonition-title"><span class="caption-number">Proposition 7 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>For every <span class="math notranslate nohighlight">\(p \in [1,\infty]\)</span>, the function <span class="math notranslate nohighlight">\(\lVert \mathbf{v} \rVert_p\)</span> defines a norm on <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="example-7">
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (<span class="math notranslate nohighlight">\(L_p\)</span>-balls)</p>
+<section class="example-content" id="proof-content">
 <p>The two-dimensional circles <span class="math notranslate nohighlight">\(\{\vvec{v}\in\mathbb{R}^2\vert \lVert\vvec{v}\rVert_p =1\}\)</span> look as follows:</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-66acae06690bc64327eb16b0be8fe31fce77ad42.svg" alt="Figure made with TikZ" /></p>
 </div></section>
-</div><p>So, the norm measures the length of a vector. Can we also measure the length of a matrix?</p>
-<p>Yes, matrix norms are the same but different.</p>
-<div class="proof definition admonition" id="definition-5">
-<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Matrix norms)</p>
+</div></section>
+<section id="matrix-norms">
+<h2>Matrix Norms<a class="headerlink" href="#matrix-norms" title="Permalink to this headline">#</a></h2>
+<p>The idea of measuring the length of a vector can be extended to less canonical vector spaces, like matrices.</p>
+<div class="proof definition admonition" id="definition-8">
+<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Matrix norms)</p>
 <section class="definition-content" id="proof-content">
 <p>We can extend the <span class="math notranslate nohighlight">\(L_p\)</span> vector normes to the <strong>element-wise <span class="math notranslate nohighlight">\(L_p\)</span> matrix norms</strong>:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -751,8 +812,9 @@ The Manhattan norm computes the length of a vector coordinate-wise:
     \lVert A\rVert_{op} &amp;=\max_{\lVert \vvec{v}\rVert=1} \lVert Av\rVert 
 \end{align*}\]</div>
 </section>
-</div><div class="proof definition admonition" id="definition-6">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Trace)</p>
+</div><p>Matrices also have an operation that behaves similar to the inner product, which is defined over the trace of a matrix.</p>
+<div class="proof definition admonition" id="definition-9">
+<p class="admonition-title"><span class="caption-number">Definition 14 </span> (Trace)</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>trace</strong> sums the elements on the diagonal of a matrix.
 Let <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span>, then
@@ -765,30 +827,36 @@ Let <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</s
 <li><p><span class="math notranslate nohighlight">\(\tr(ABCD)=\tr(BCDA)=\tr(CDAB)=tr(DABC)\)</span> (cycling property)</p></li>
 </ol>
 </section>
-</div><p>For any vector <span class="math notranslate nohighlight">\(\vvec{v}\in\mathbb{R}^d\)</span> and matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span>, we have</p>
+</div><p>The inner vector product can be seen as a special case of the inner product that is defined over the trace. For any vector <span class="math notranslate nohighlight">\(\vvec{v}\in\mathbb{R}^d\)</span> and matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span>, we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \lVert\mathbf{v}\rVert^2 &amp;=  \mathbf{v}^\top \mathbf{v} = \tr(\mathbf{v}^\top \mathbf{v})
     &amp;\lVert A\rVert^2 &amp;=  \tr(A^\top A)
 \end{align*}\]</div>
-<p>From this property derive the <strong>binomial formulas</strong> of vectors and matrices:</p>
+<p>The <span class="math notranslate nohighlight">\(L_2\)</span> vector and matrix norms have a <strong>binomial formula</strong>, that can be derived from the inner product defining the norm:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \lVert \vvec{x}-\vvec{y}\rVert^2 &amp;= ( \vvec{x}-\vvec{y})^\top(\vvec{x}-\vvec{y}) = \lVert\vvec{x}\rVert^2 -2\langle\vvec{x},\vvec{y}\rangle +\lVert\vvec{y}\rVert^2\\
     \lVert X-Y\rVert^2 &amp;= \tr( (X-Y)^\top(X-Y)) = \lVert X\rVert^2 -2\langle X, Y\rangle +\lVert Y\rVert^2
 \end{align*}\]</div>
+</section>
 <section id="orthogonal-matrices">
 <h2>Orthogonal Matrices<a class="headerlink" href="#orthogonal-matrices" title="Permalink to this headline">#</a></h2>
-<p>A matrix <span class="math notranslate nohighlight">\(A\)</span> with orthogonal columns satisfies</p>
+<p>The abstraction from orthogonal vectors to orthogonal matrices is defined over the orthogonality of the rows and columns of a matrix.
+If the columns of a matrix <span class="math notranslate nohighlight">\(A\)</span> are orthogonal, then the matrix <span class="math notranslate nohighlight">\(A^\top A\)</span> is diagonal</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A^\top A = \diag(\lVert A_{\cdot 1}\rVert^2, \ldots, \lVert A_{\cdot d}\rVert^2)
+    A^\top A = \diag(\lVert A_{\cdot 1}\rVert^2, \ldots, \lVert A_{\cdot d}\rVert^2).
 \end{align*}\]</div>
-<p>A matrix <span class="math notranslate nohighlight">\(A\)</span> with orthonormal columns satisfies</p>
+<p>If, in addition, each column has unit length <span class="math notranslate nohighlight">\(\lVert A_{\cdot i}\rVert =1\)</span>, then the columns of <span class="math notranslate nohighlight">\(A\)</span> are orthonormal and the product <span class="math notranslate nohighlight">\(A^\top A\)</span> is equal to the identity matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A^\top A = \diag(1, \ldots, 1)
+    A^\top A = \diag(1, \ldots, 1)=I.
 \end{align*}\]</div>
+<p>The definition of orthogonal matrices is weirdly different from the properties of the corresponding columns, since a matrix is called <em>orthogonal</em> if the columns are <em>orthonormal</em> and the rows are <em>orthonormal</em>, as indicated below.</p>
+<div class="proof definition admonition" id="definition-10">
+<p class="admonition-title"><span class="caption-number">Definition 15 </span></p>
+<section class="definition-content" id="proof-content">
 <p>A square matrix <span class="math notranslate nohighlight">\(A\in \mathbb{R}^{n\times n}\)</span> is called <strong>orthogonal</strong> if
 <div class="math notranslate nohighlight">
 \[A^\top A = AA^\top=I\]</div>
@@ -801,7 +869,28 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 <div class="math notranslate nohighlight">
 \[\lVert XV\rVert = \lVert V\rVert\]</div>
 </p>
-<div class="proof theorem admonition" id="theorem-7">
+</section>
+</div><div class="proof proposition admonition" id="proposition-11">
+<p class="admonition-title"><span class="caption-number">Proposition 8 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>The <span class="math notranslate nohighlight">\(L_2\)</span> vector and matrix norm <span class="math notranslate nohighlight">\(\|\cdot\|_2\)</span> is orthogonal invariant.</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. If <span class="math notranslate nohighlight">\(X\)</span> is orthogonal, then <span class="math notranslate nohighlight">\(X^\top X = I\)</span>. Hence
+<div class="math notranslate nohighlight">
+\[
+\|X\vvec{v}\|_2^2
+= (X\vvec{v})^\top (X\vvec{v})
+= \vvec{v}^\top X^\top X \vvec{v}
+= \vvec{v}^\top \vvec{v}
+= \|\vvec{v}\|_2^2.
+\]</div>
+
+Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec{v}\|_2=\|\vvec{v}\|_2\)</span>. The same applies to the matrix <span class="math notranslate nohighlight">\(L_2\)</span> norm with the trace inner product.</p>
+</div>
+<p>For <span class="math notranslate nohighlight">\(p\in[1,\infty]\)</span> with <span class="math notranslate nohighlight">\(p\neq 2\)</span>, the norm <span class="math notranslate nohighlight">\(\|\cdot\|_p\)</span> is in general not orthogonal invariant. Orthogonal invariance gives a nice geometric meaning to orthogonal vectors and matrices: they model a rotation. If we multiply an orthogonal matrix with a vector or matrix, then it doesn’t change the length of that vector in the <span class="math notranslate nohighlight">\(L_2\)</span>-norm. Hence, everything that they can change is the direction of the vector.</p>
+<p>In fact, every multiplication of a matrix <span class="math notranslate nohighlight">\(X\)</span> with a vector can be interpreted as a rotation, a scaling and another rotation of that vector. This property is defined by the decomposition of a matrix <span class="math notranslate nohighlight">\(X\)</span> that is given by the Singular Value Decomposition (SVD).</p>
+<div class="proof theorem admonition" id="theorem-12">
 <p class="admonition-title"><span class="caption-number">Theorem 3 </span> (SVD)</p>
 <section class="theorem-content" id="proof-content">
 <p>For every matrix <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{n\times p}\)</span> there exist orthogonal matrices <span class="math notranslate nohighlight">\(U\in\mathbb{R}^{n\times n}, V\in\mathbb{R}^{p\times p}\)</span> and <span class="math notranslate nohighlight">\(\Sigma  \in\mathbb{R}^{n\times p}\)</span> such that
@@ -813,7 +902,7 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 <li><p><span class="math notranslate nohighlight">\(\Sigma\)</span> is a rectangular diagonal matrix, <span class="math notranslate nohighlight">\(\Sigma_{11}\geq\ldots\geq \Sigma_{kk}\)</span> where <span class="math notranslate nohighlight">\(k=\min\{n,p\}\)</span></p></li>
 </ul>
 </section>
-</div><p>The column vectors <span class="math notranslate nohighlight">\(U_{\cdot s}\)</span> and <span class="math notranslate nohighlight">\(V_{\cdot s}\)</span> are called <strong>left</strong> and <strong>right singular vectors</strong> and the values <span class="math notranslate nohighlight">\(\sigma_i=\Sigma_{ii}\)</span> are called <strong>singular values</strong> <span class="math notranslate nohighlight">\((1\leq i\leq l)\)</span>.</p>
+</div><p>The column vectors <span class="math notranslate nohighlight">\(U_{\cdot s}\)</span> and <span class="math notranslate nohighlight">\(V_{\cdot s}\)</span> are called <strong>left</strong> and <strong>right singular vectors</strong> and the values <span class="math notranslate nohighlight">\(\sigma_i=\Sigma_{ii}\)</span> are called <strong>singular values</strong> <span class="math notranslate nohighlight">\((1\leq i\leq l)\)</span>. Let’s have a look how we can compute the SVD in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -828,6 +917,7 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 </div>
 </div>
 </div>
+<p>We see that the matrix <span class="math notranslate nohighlight">\(U\)</span> is a <span class="math notranslate nohighlight">\(4\times 4\)</span> matrix, the matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> is given only by the array of singular values and the matrix <span class="math notranslate nohighlight">\(V^\top\)</span> is a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix. The matrix <span class="math notranslate nohighlight">\(U\)</span> is given as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span>
@@ -835,14 +925,15 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.6, -0.1, -0.5, -0.6],
-       [-0.4, -0.8,  0.4,  0.1],
-       [-0.5,  0.5,  0.7, -0.3],
-       [-0.5,  0.2, -0.2,  0.8]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5, -0.4, -0.7, -0.3],
+       [-0.3, -0.7,  0.7, -0.1],
+       [-0.7,  0.6,  0.3, -0.2],
+       [-0.4, -0. , -0.1,  0.9]])
 </pre></div>
 </div>
 </div>
 </div>
+<p><span class="math notranslate nohighlight">\(U\)</span> is orthogonal, when we compute <span class="math notranslate nohighlight">\(UU^\top\)</span>, then we get the identity matrix (or the numerically computed equivalent of an identity matrix, having values approximately equal to zero outside of the diagonal):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="nd">@U</span><span class="o">.</span><span class="n">T</span>
@@ -850,14 +941,15 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.0e+00, -1.6e-16, -4.3e-16, -2.6e-16],
-       [-1.6e-16,  1.0e+00,  3.1e-17, -5.4e-17],
-       [-4.3e-16,  3.1e-17,  1.0e+00, -1.7e-16],
-       [-2.6e-16, -5.4e-17, -1.7e-16,  1.0e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.0e+00,  6.6e-17, -2.4e-16, -1.1e-16],
+       [ 6.6e-17,  1.0e+00, -9.2e-18,  3.2e-17],
+       [-2.4e-16, -9.2e-18,  1.0e+00, -4.7e-17],
+       [-1.1e-16,  3.2e-17, -4.7e-17,  1.0e+00]])
 </pre></div>
 </div>
 </div>
 </div>
+<p>The middle matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> is given by their diagonal vector. We can model it as a diagonal matrix with the <code class="docutils literal notranslate"><span class="pre">diag</span></code> operator. Its dimensionality is the minimum or the number of columns and rows of the matrix <span class="math notranslate nohighlight">\(X\)</span>, which is two in our case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">σs</span><span class="p">)</span>
@@ -865,12 +957,13 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.1, 0. ],
-       [0. , 0.6]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.6, 0. ],
+       [0. , 0.5]])
 </pre></div>
 </div>
 </div>
 </div>
+<p>If we want to transform <span class="math notranslate nohighlight">\(\Sigma\)</span> into the <span class="math notranslate nohighlight">\(4\times 2\)</span> matrix such that we can compute <span class="math notranslate nohighlight">\(U\Sigma V^\top\)</span>, then we need to stack the matrix with zeros.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">σs</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="p">)</span>
@@ -879,14 +972,38 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.1, 0. ],
-       [0. , 0.6],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.6, 0. ],
+       [0. , 0.5],
        [0. , 0. ],
        [0. , 0. ]])
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now we can compute the reconstruction</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="nd">@Σ@Vt</span><span class="p">,</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.4, 0.7],
+        [0.1, 0.6],
+        [1. , 0.5],
+        [0.4, 0.4]]),
+ array([[0.4, 0.7],
+        [0.1, 0.6],
+        [1. , 0.5],
+        [0.4, 0.4]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>The SVD can tell us if a matrix is invertible, and we can compute the inverse if we have the SVD.</p>
+<div class="proof proposition admonition" id="proposition-13">
+<p class="admonition-title"><span class="caption-number">Proposition 9 </span></p>
+<section class="proposition-content" id="proof-content">
 <p>A <span class="math notranslate nohighlight">\((n\times n)\)</span> matrix <span class="math notranslate nohighlight">\(A=U\Sigma V^\top\)</span> is invertible if all singular values are larger than zero. The inverse is given by
 <div class="math notranslate nohighlight">
 \[A^{-1} = V \Sigma^{-1} U^\top,\ \text{ where }\]</div>
@@ -903,12 +1020,71 @@ A matrix norm <span class="math notranslate nohighlight">\(\lVert\cdot \rVert\)<
       &amp;     &amp; \ddots &amp;\\
     0 &amp; 0   &amp; \ldots &amp; \frac{1}{\sigma_n}\end{pmatrix}
 \end{align*}\]</div>
-<p>Since the matrices <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> of the SVD are orthogonal, we have:</p>
+</section>
+</div><div class="toggle docutils container">
+<div class="proof admonition" id="proof">
+<p>Proof. We first show that <span class="math notranslate nohighlight">\(A\)</span> is invertible if and only if all singular values are strictly positive.</p>
+<p>Since <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal, they are invertible, with inverses <span class="math notranslate nohighlight">\(U^{-1}=U^\top\)</span> and <span class="math notranslate nohighlight">\(V^{-1}=V^\top\)</span>. Hence
+<div class="math notranslate nohighlight">
+\[
+A = U\Sigma V^\top
+\]</div>
+
+is invertible if and only if <span class="math notranslate nohighlight">\(\Sigma\)</span> is invertible.</p>
+<p>Now <span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal matrix, and a diagonal matrix is invertible if and only if all its diagonal entries are nonzero. Therefore, <span class="math notranslate nohighlight">\(\Sigma\)</span> is invertible if and only if
+<div class="math notranslate nohighlight">
+\[
+\sigma_i &gt; 0 \qquad \text{for all } i=1,\dots,n.
+\]</div>
+
+This proves the first claim.</p>
+<p>Assume now that all singular values are strictly positive. Then <span class="math notranslate nohighlight">\(\Sigma^{-1}\)</span> exists and is given by
+<div class="math notranslate nohighlight">
+\[
+\Sigma^{-1}=\diag(
+\frac{1}{\sigma_1}, \frac{1}{\sigma_2}, \ldots,\frac{1}{\sigma_n}).
+\]</div>
+
+We claim that
+<div class="math notranslate nohighlight">
+\[
+A^{-1} = V\Sigma^{-1}U^\top.
+\]</div>
+</p>
+<p>Indeed, using <span class="math notranslate nohighlight">\(V^\top V = I\)</span> and <span class="math notranslate nohighlight">\(UU^\top = I\)</span>, we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+A(V\Sigma^{-1}U^\top)
+&amp;= U\Sigma V^\top V\Sigma^{-1}U^\top \\
+&amp;= U\Sigma\Sigma^{-1}U^\top \\
+&amp;= UIU^\top \\
+&amp;= UU^\top \\
+&amp;= I.
+\end{align*}\]</div>
+<p>Similarly,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+(V\Sigma^{-1}U^\top)A
+&amp;= V\Sigma^{-1}U^\top U\Sigma V^\top \\
+&amp;= V\Sigma^{-1}\Sigma V^\top \\
+&amp;= VIV^\top \\
+&amp;= VV^\top \\
+&amp;= I.
+\end{align*}\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(V\Sigma^{-1}U^\top\)</span> is both a left and right inverse of <span class="math notranslate nohighlight">\(A\)</span>, so it is the inverse of <span class="math notranslate nohighlight">\(A\)</span>. Hence
+<div class="math notranslate nohighlight">
+\[ A^{-1} = V\Sigma^{-1}U^\top. \]</div>
+</p>
+</div>
+</div>
+<div class="proof admonition" id="proof">
+<p>Proof. Since the matrices <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> of the SVD are orthogonal, we have:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 AA^{-1} &amp;= U\Sigma V^\top V\Sigma^{-1} U^\top = U\Sigma \Sigma^{-1} U^\top = UU^\top = I\\
 A^{-1}A &amp;= V \Sigma^{-1} U^\top U\Sigma V^\top = V \Sigma^{-1} \Sigma V^\top = V V^\top = I
 \end{align*}\]</div>
+</div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -964,7 +1140,7 @@ A^{-1}A &amp;= V \Sigma^{-1} U^\top U\Sigma V^\top = V \Sigma^{-1} \Sigma V^\top
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/linalg_normed_vs_9_0.png" src="_images/linalg_normed_vs_9_0.png" />
+<img alt="_images/linalg_normed_vs_15_0.png" src="_images/linalg_normed_vs_15_0.png" />
 </div>
 </div>
 </section>

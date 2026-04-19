@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -653,7 +648,7 @@ title="Print to PDF"
 <h1>Analytic Solutions<a class="headerlink" href="#analytic-solutions" title="Permalink to this headline">#</a></h1>
 <p>You probably know from your highschool math classes that every local minimizer <span class="math notranslate nohighlight">\(x_0\)</span> of a function <span class="math notranslate nohighlight">\(f:\mathbb{R}\rightarrow\mathbb{R}\)</span> is a stationary point: <span class="math notranslate nohighlight">\(\frac{d}{dx}f(x_0)=0\)</span>. This is known as the first order neccessary condition. This property is easily understood, considering that the derivative indicates the slope of a function at a specified point. If we have a real-valued minimizer, then the slope is zero at that minimizer. If the slope would be positive, then we can go to the left to decrease the function value further, and if the slope is negative, we can go to the right. By means of this property, we can identify all the candidates that could be minimizers. Maximizers and saddle points are stationary points too. With the second order neccessary condition, we can filter further the minimizers from the pool of candidates. The second order neccessary condition states that at a minimizer the second derivative is nonnegative <span class="math notranslate nohighlight">\(\frac{d^2}{dx^2}f(x_0)\geq 0\)</span>. The second derivative is the slope of the slope. If we have a minimizer, then the slope increases: first we go down, and then we go up. Hence, we need that the slope of the slope does at least not decrease.</p>
 <div class="proof example admonition" id="example-0">
-<p class="admonition-title"><span class="caption-number">Example 7 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6 </span></p>
 <section class="example-content" id="proof-content">
 <p>Let’s have a look at a seemingly simple example. The function <span class="math notranslate nohighlight">\(f(x) = \frac14x^4 + \frac13x^3 -x^2\)</span> is plotted below and we see that there are two minimizers <span class="math notranslate nohighlight">\(x_1=-2\)</span> and <span class="math notranslate nohighlight">\(x_2=1\)</span>. The question is just if those are all minimizers, or if there is another one beyond the scope of what is plotted here.</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-b2427c92aa6d74085e15433b634dd01ad375d2b1.svg" alt="Figure made with TikZ" /></p>
@@ -710,7 +705,7 @@ neighborhood of <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, 
 \[\vvec{x}^\top A \vvec{x}\geq 0 \text{ for all } \vvec{x}\in\mathbb{R}^d\]</div>
 </p>
 <div class="proof example admonition" id="expl_fonc">
-<p class="admonition-title"><span class="caption-number">Example 8 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 7 </span></p>
 <section class="example-content" id="proof-content">
 <figure class="align-left" id="rosenbrock">
 <a class="reference internal image-reference" href="_images/rosenbrock.png"><img alt="_images/rosenbrock.png" src="_images/rosenbrock.png" style="height: 200px;" /></a>
@@ -772,7 +767,7 @@ We conclude that the Hessian at our stationary point is positive semi-definite. 
 </section>
 </div><p>Nice, we have now a strategy yo find local minimizers if we have an unconstrained objective with an objective function which is continuously differentiable. Let’s consider a more complex setting, introducing constraints.</p>
 <div class="proof example admonition" id="example-4">
-<p class="admonition-title"><span class="caption-number">Example 9 </span> (Solving of a dual)</p>
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Solving of a dual)</p>
 <section class="example-content" id="proof-content">
 <p>We solve the following constrained optimization problem:</p>
 <div class="amsmath math notranslate nohighlight">

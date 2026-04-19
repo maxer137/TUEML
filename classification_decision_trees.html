@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -716,7 +711,7 @@ title="Print to PDF"
 <section id="inference">
 <h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Decision Tree)</p>
+<p class="admonition-title"><span class="caption-number">Definition 34 </span> (Decision Tree)</p>
 <section class="definition-content" id="proof-content">
 <p>A Decision Tree is a directed binary tree that represents a classifying function <span class="math notranslate nohighlight">\(f_{dt}:\mathbb{R}^d\rightarrow [0,1]^c\)</span>. The classifying function is defined recursively:
 <div class="math notranslate nohighlight">
@@ -738,7 +733,7 @@ where</p>
 </section>
 </div><p>Although decision trees are often represented as if they only store the predicted label at a leaf, in practice, the class probabilities are stored. Class probabilities are useful as a confidence measure of the prediction <span class="math notranslate nohighlight">\( \hat{y} = \argmax_y\ f_{dt}(\vvec{x}) \)</span>.</p>
 <div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 19 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 18 </span></p>
 <section class="example-content" id="proof-content">
 <p>The data underlying the GOT personality test dataset could for example have the features <span class="math notranslate nohighlight">\(\mathtt{x}_1,\ldots,\mathtt{x}_4\)</span>, where</p>
 <ul class="simple">
@@ -857,7 +852,7 @@ If the feature is continuous, then we can try as thresholds the midpoints betwee
 <span class="eqno">(37)<a class="headerlink" href="#equation-information-gain" title="Permalink to this equation">#</a></span>\[IG(\mathcal{L},{\cal L}_0, {\cal L}_1) = \mathrm{Impurity}({\cal L}) - \left\{ \frac{\lvert {\cal L}_0\rvert}{\lvert{\cal L}\rvert} \mathrm{Impurity}({\cal L}_0) + \frac{\lvert{\cal L}_1\rvert}{\lvert{\cal L}\rvert} \mathrm{Impurity}({\cal L}_{1}) \right\} \]</div>
 <p>The function <span class="math notranslate nohighlight">\(\mathrm{Impurity}\)</span> measures the uncertainty of the prediction of the class with the highest empirical disctribution <span class="math notranslate nohighlight">\(p_{\cal L}(y)\)</span>. If the empirical distribution is very high for one class and very low for the remaining classes, then the impurity is low. We consider the following definitions of impurity:</p>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Impurity measures)</p>
+<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Impurity measures)</p>
 <section class="definition-content" id="proof-content">
 <p>We define the following three impurity measures that can be used to compute the information gain:</p>
 <div class="amsmath math notranslate nohighlight">

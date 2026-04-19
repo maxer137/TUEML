@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -653,7 +648,7 @@ title="Print to PDF"
 <h1>Convex Optimization<a class="headerlink" href="#convex-optimization" title="Permalink to this headline">#</a></h1>
 <p>Convex optimization represents a somewhat ideal scenario in optimization problems. With a convex objective, there is only one minimum to find, simplifying the task. Many optimization problems in machine learning are convex, or at least convex in certain coordinates when others are fixed. Knowing whether an objective is convex is valuable for understanding how to improve a model. If a model derived from minimizing the objective function performs poorly on other metrics, this may indicate that the objective does not fully capture what defines a good model. To establish convex optimization objectives, we first define convex sets and convex functions.</p>
 <div class="proof definition admonition" id="convex_set">
-<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Convex set)</p>
+<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Convex set)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>set</strong> <span class="math notranslate nohighlight">\(\mathcal{X}\subseteq \mathbb{R}^d\)</span> is <strong>convex</strong> if and only if the line segment between every pair of points in the set is in the set.
 That is, if for all <span class="math notranslate nohighlight">\(x,y\in \mathcal{X}\)</span> and <span class="math notranslate nohighlight">\(\alpha\in[0,1]\)</span> we have
@@ -664,7 +659,7 @@ That is, if for all <span class="math notranslate nohighlight">\(x,y\in \mathcal
 </div><p>The definition states that in a convex set you can connect any two dots within the set and you will never leave the set when drawing that connecting line. The set on the left is convex, and the set on the right is not convex.</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-9f6a8c6cf8d54cc9a602dfa2ac2a7080c228fb47.svg" alt="Figure made with TikZ" /></p>
 </div><div class="proof definition admonition" id="convex_function">
-<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Convex function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Convex function)</p>
 <section class="definition-content" id="proof-content">
 <p>A function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d\rightarrow\mathbb{R}\)</span> is <strong>convex</strong> if and only if for every <span class="math notranslate nohighlight">\(\alpha \in[0,1]\)</span>, and <span class="math notranslate nohighlight">\(\vvec{x},\vvec{y}\in\mathbb{R}^d\)</span>:</p>
 <div class="amsmath math notranslate nohighlight" id="equation-43be6ff6-a138-4d41-ad92-4028431b0d87">
@@ -676,7 +671,7 @@ That is, if for all <span class="math notranslate nohighlight">\(x,y\in \mathcal
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-e85bc54ebacb34fea0c46773f84f9685c4c4d545.svg" alt="Figure made with TikZ" /></p>
 </div><p>A convex optimization problem, or objective, is now characterized by two things: a convex objective function and a convex feasible set.</p>
 <div class="proof definition admonition" id="definition-2">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Convex optimization problem)</p>
+<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Convex optimization problem)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a convex objective function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d\rightarrow \mathbb{R}\)</span> and a convex feasible set <span class="math notranslate nohighlight">\(\mathcal{C}\subseteq\mathbb{R}^d\)</span>
 then the objective of a <strong>convex optimization problem</strong> can be written in the following form:</p>
@@ -697,7 +692,7 @@ we can write any constrained objective as the following unconstrained one:</p>
 \end{align*}\]</div>
 <p>Since the objective function above returns infinity for any <span class="math notranslate nohighlight">\(\vvec{x}\)</span> outside of the feasible set, any potential minimizer has to be feasible. If we now apply the definition of a convex function, then we require that the graph of the function is below the connecting line. However, if we have a nonconvex feasible set, then there exist two points in the feasible set whose connecting line is partially outside of the feasible set. On this part, where the connecting line is outside of the feasible set, the objective function returns infinity. Hence, the graph of the objective will not be under the connecting line. The example below illustrates this property further.</p>
 <div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 6 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5 </span></p>
 <section class="example-content" id="proof-content">
 <p>The figure below displays the function <span class="math notranslate nohighlight">\(f(x)=x^2 + \mathbb{1}_{\{\lvert x\rvert\geq 2\}}\)</span>. The feasible set <span class="math notranslate nohighlight">\(\{\lvert x\rvert\geq 2\}\)</span> is nonconvex, since the line connecting <span class="math notranslate nohighlight">\(x_1=-2.5\)</span> and <span class="math notranslate nohighlight">\(x_2=3.5\)</span> leaves the feasible set. We indicate domain where the function is returning infinity by the dashed vertical lines. If we now connect two function values as indicated by the red line, then the graph is above the line within the interval <span class="math notranslate nohighlight">\([-2,2]\)</span>. This shows that the function <span class="math notranslate nohighlight">\(f\)</span>, indicating an optimization objective with a convex objective function and a nonconvex feasible set is not a convex function.</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-e85e81b8b20b55065b588139b2fabfce5f91a354.svg" alt="Figure made with TikZ" /></p>

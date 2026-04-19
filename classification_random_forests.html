@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -714,7 +709,7 @@ title="Print to PDF"
 <section id="inference">
 <h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Random Forest)</p>
+<p class="admonition-title"><span class="caption-number">Definition 36 </span> (Random Forest)</p>
 <section class="definition-content" id="proof-content">
 <p>A Random Forest classifier is an ensemble of <span class="math notranslate nohighlight">\(m\)</span> decision trees <span class="math notranslate nohighlight">\(f_{dt1},\ldots,f_{dtm}\)</span> that aggregates predictions of single trees via a majority vote. Let <span class="math notranslate nohighlight">\(\mathbb{1}(\vvec{p})\in\{0,1\}^c\)</span> denote the one-hot encoded argmax function (also called hardmax), such that <span class="math notranslate nohighlight">\(\mathbb{1}(\vvec{p})_y=1\)</span> if and only if <span class="math notranslate nohighlight">\(y = \argmax_{1\leq l\leq c} p_l\)</span>. We define then the random forest classifier as
 <div class="math notranslate nohighlight">
@@ -863,7 +858,7 @@ In detail, the learning algorithm for random forests look as follows.</p>
 <h3>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h3>
 <p>Bootstrapping is similar to the dataset division known from cross valiadation, only that in bootstrapping the generated datasets overlap, that is, various data points are present in multiple dataset samples.</p>
 <div class="proof definition admonition" id="definition-3">
-<p class="admonition-title"><span class="caption-number">Definition 26 </span> (Bootstrapping)</p>
+<p class="admonition-title"><span class="caption-number">Definition 37 </span> (Bootstrapping)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a dataset <span class="math notranslate nohighlight">\(\mathcal{D}=\{(\vvec{x}_i,y_i)\mid 1\leq i\leq n\}\)</span> containing <span class="math notranslate nohighlight">\(n\)</span> datapoints. A bootstrap sample <span class="math notranslate nohighlight">\(\mathcal{D}_j=\{(\vvec{x}_{i_b},y_{i_b})\mid 1\leq b\leq n\}\subseteq\mathcal{D}\)</span> gathers <span class="math notranslate nohighlight">\(n\)</span> uniformly distributed samples (<span class="math notranslate nohighlight">\(i_b \sim\mathcal{U}\{1, \dots, n\}\)</span>) from <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Hence, <span class="math notranslate nohighlight">\(\mathcal{D}_j\)</span> may contain various duplicates of data points.</p>
 </section>

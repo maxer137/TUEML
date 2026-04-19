@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -695,7 +690,7 @@ title="Print to PDF"
 <h2>Kernel trick<a class="headerlink" href="#kernel-trick" title="Permalink to this headline">#</a></h2>
 <p>The kernel trick is applicable when an objective can be formulated such that the only occurrences of data points are in inner products between data points <span class="math notranslate nohighlight">\(\vvec{x}_i^\top\vvec{x}_j\)</span>. The kernel trick is to replace the inner products with a kernel function <span class="math notranslate nohighlight">\(k(\vvec{x}_i,\vvec{x}_j)\)</span>. The kernel function represents an implicit computation of the inner product in a transformed feature space, that does not require the compuattion of the feature transformation itself: <span class="math notranslate nohighlight">\(k(\vvec{x}_i,\vvec{x}_j)=\phi(\vvec{x}_i)^\top\phi(\vvec{x}_j)\)</span>. The kernel function has an interpretation as a similarity measure between two vectors. Choosing a kernel is hence equivalent to choosing what kind of similarity measure is considered suitable for the classification task. Hnece, although we are dealing with very high-dimensional feature transformations that are not easy to understand, the inner product defined by the kernel has an interpretation as a similarity measure that still allows for understanding what the model is doing.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Kernel)</p>
+<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Kernel)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>kernel function</strong> <span class="math notranslate nohighlight">\(k:\mathbb{R}^d\times\mathbb{R}^d\rightarrow \mathbb{R}\)</span> maps two <span class="math notranslate nohighlight">\(d\)</span>-dimensional vectors to a nonnegative value that has an interpretation as an inner product similarity measure in a transformed feature space. That is, a feature transformation <span class="math notranslate nohighlight">\(\phi:\mathbb{R}^d\rightarrow \mathbb{R}^p\)</span> exists such that
 <div class="math notranslate nohighlight">
@@ -742,7 +737,7 @@ b^{\ast} &amp;= y_{i} - {{\bf w}^{\ast}}^\top {\bf x}_{i} \\
 \end{align*}\]</div>
 <p>Now, we can replace the linear kernel with any other kernel function and we can perform predictions for a kernel SVM without having to compute the feature transformation that defines the kernel.</p>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 30 </span> (kernel SVM)</p>
+<p class="admonition-title"><span class="caption-number">Definition 41 </span> (kernel SVM)</p>
 <section class="definition-content" id="proof-content">
 <p>An kernel SVM classifier for a binary classification problem (<span class="math notranslate nohighlight">\(y\in\{-1,1\}\)</span>) reflects the distance to the decision boundary in a transformed feature space <span class="math notranslate nohighlight">\(\vvec{w}^\top \phi(\vvec{x})+b=0\)</span>
 <div class="math notranslate nohighlight">
@@ -766,7 +761,7 @@ The class predictions are then computed as
 <h2>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">#</a></h2>
 <p>The quadratic program objective of the SVM (see Eq.<a class="reference internal" href="classification_svms.html#equation-svm-form10">(50)</a>) is perfect for applying a kernel. The data points occur in this objective only over the inner product in the computation of <span class="math notranslate nohighlight">\(DD^\top\)</span>, which computes the linear kernel matrix. We can replace <span class="math notranslate nohighlight">\(DD^\top\)</span> with a kernel matrix and obtain the kernel SVM objective</p>
 <div class="proof definition admonition" id="definition-2">
-<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Quadratic Program Kernel Soft-Margin SVM)</p>
+<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Quadratic Program Kernel Soft-Margin SVM)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a kernel matrix <span class="math notranslate nohighlight">\(K\in\mathbb{R}^{n\times n}\)</span>. The optimization objective of the kernel soft-margin SVM is given by the following quadratic program</p>
 <div class="math notranslate nohighlight" id="equation-kernel-svm">

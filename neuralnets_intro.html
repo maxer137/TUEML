@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -711,7 +706,7 @@ The plot below shows the sigmoid function.</p>
 </div>
 <p>For multiclass classification, the softmax regression generalizes logistic regression to <span class="math notranslate nohighlight">\(c\)</span> classes by learning one hyperplane per class. The more a point lies on the positive side of a hyperplane, the more confidently it is assigned to that class. The confidence is again interpreted as a probability that a sample belongs to a class, which is now computed over the softmax function.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Softmax Regression)</p>
+<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Softmax Regression)</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>softmax regression</strong> (a.k.a. multinomial logistic regression) classifier computes the probability that point <span class="math notranslate nohighlight">\(\vvec{x}\)</span> belongs to class <span class="math notranslate nohighlight">\(y\)</span> by means of <span class="math notranslate nohighlight">\(c\)</span> hyperplanes, defined by parameters <span class="math notranslate nohighlight">\(\vvec{w}_l\)</span> and <span class="math notranslate nohighlight">\(b_l\)</span>. Gathering the <span class="math notranslate nohighlight">\(c\)</span> hyperplane defining parameters in a matrix <span class="math notranslate nohighlight">\(W\)</span>, such that <span class="math notranslate nohighlight">\(W_{l\cdot} = \vvec{w}_l^\top\)</span>, and <span class="math notranslate nohighlight">\(\vvec{b}\)</span>, then the softmax regression classifier models the probability that point <span class="math notranslate nohighlight">\(\vvec{x}\)</span> belongs to class <span class="math notranslate nohighlight">\(l\)</span> over the parameters <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(\vvec{b}\)</span>
 <div class="math notranslate nohighlight">
@@ -787,7 +782,7 @@ are maximized</p>
 \min_{\theta} \frac1n \sum_{i=1}^nCE(y_i,p(y\mid \vvec{x}_i,\theta)).
 \end{align*}\]</div>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Cross-entropy)</p>
+<p class="admonition-title"><span class="caption-number">Definition 44 </span> (Cross-entropy)</p>
 <section class="definition-content" id="proof-content">
 <p>The cross entropy is a function <span class="math notranslate nohighlight">\(CE:\{1,\ldots,c\}\times [0,1]^c\rightarrow \mathbb{R}_+\)</span>,
 mapping a label <span class="math notranslate nohighlight">\(y\in\{1,\ldots,c\}\)</span> and a probability vector <span class="math notranslate nohighlight">\(\vvec{z}\in[0,1]^c\)</span> to the negative logarithm of the probability vector at position <span class="math notranslate nohighlight">\(y\)</span>:

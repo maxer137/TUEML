@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -819,7 +814,7 @@ The idea is that a model which is close to the true regression function, should 
 </ol>
 <p>If we repeat this sampling process <span class="math notranslate nohighlight">\(k\)</span> times, obtaining scores <span class="math notranslate nohighlight">\(MSE_1,\ldots,MSE_k\)</span>, we could approximate the <strong>Expected squared Prediction Error</strong> (EPE). The expected squared prediction error returns the squared error of a model <span class="math notranslate nohighlight">\(f(x)\)</span> and target <span class="math notranslate nohighlight">\(y\)</span>, where <span class="math notranslate nohighlight">\(f\)</span> is derived from training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 14 </span> (EPE)</p>
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (EPE)</p>
 <section class="definition-content" id="proof-content">
 <p>The Expected squared Prediction Error (EPE) is the expected error
 <div class="math notranslate nohighlight">

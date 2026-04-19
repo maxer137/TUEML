@@ -358,11 +358,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_pca.html">
      Principal Component Analysis
     </a>
@@ -699,7 +694,7 @@ title="Print to PDF"
 <section id="d-convolution">
 <h2>2D Convolution<a class="headerlink" href="#d-convolution" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 34 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 45 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Given a matrix <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d_h\times d_w}\)</span> representing for example an image. Let <span class="math notranslate nohighlight">\(K\in\mathbb{R}^{\kappa\times \kappa}\)</span> be the convolution kernel (filter). The output of a convolution is then defined as the matrix <span class="math notranslate nohighlight">\(O\in\mathcal{R}^{d_h-k+1\times d_w-k+1}\)</span> whose entries are given by</p>
 <div class="amsmath math notranslate nohighlight">
@@ -10903,7 +10898,7 @@ W_{out}&amp;=\left\lfloor \frac{W−k+2p}{s}\right\rfloor+1
 <h2>Convolutional Layers<a class="headerlink" href="#convolutional-layers" title="Permalink to this headline">#</a></h2>
 <p>In convolutional neural networks (CNNs), images are represented as 3D tensors. For a standard RGB image we have three channels (red, green, and blue). In general, we say that our input has <span class="math notranslate nohighlight">\(C_{in}\)</span> channels and height <span class="math notranslate nohighlight">\(H\)</span> and width <span class="math notranslate nohighlight">\(W\)</span>. A 2D convolutional layer transforms a tensor into another tensor, where the dimensionality of the output tensor depends on the kernel size and additional parameters such as padding and stride.</p>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Convolution Layer)</p>
+<p class="admonition-title"><span class="caption-number">Definition 46 </span> (Convolution Layer)</p>
 <section class="definition-content" id="proof-content">
 <p>A convolutional kernel takes an input tensor <span class="math notranslate nohighlight">\(X\)</span> of shape
 <div class="math notranslate nohighlight">

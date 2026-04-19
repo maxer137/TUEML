@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -611,13 +606,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-spaces">
+   Matrix Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrix-operations">
    Matrix Operations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vector-and-matrix-products">
-   Vector and Matrix Products
+  <a class="reference internal nav-link" href="#vector-products">
+   Vector Products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-products">
+   Matrix Products
   </a>
  </li>
 </ul>
@@ -640,13 +645,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-spaces">
+   Matrix Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrix-operations">
    Matrix Operations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vector-and-matrix-products">
-   Vector and Matrix Products
+  <a class="reference internal nav-link" href="#vector-products">
+   Vector Products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-products">
+   Matrix Products
   </a>
  </li>
 </ul>
@@ -681,11 +696,14 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-</div><p>A vector space is a structure where you can do most operations you know from real numbers, but not all. Let <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}, \vvec{v},\vvec{w}\in\mathcal{V}\)</span>. The following operations are well-defined:</p>
+</div><p>The definition of a vector space may appear technical at first. However, it formalizes two simple ideas: we can add elements and scale them, and these operations behave consistently (as we know it from real numbers). Most of linear algebra studies the consequences of these properties.</p>
+<p>Let <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}, \vvec{v},\vvec{w}\in\mathcal{V}\)</span>. Then the vector space properties imply that the following operations are well-defined:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\vvec{v}/\alpha = \frac1\alpha \vvec{v}\)</span> for <span class="math notranslate nohighlight">\(\alpha\neq 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\vvec{v}-\vvec{w}\)</span><br />
-However, the vector-vector product is not per se defined in a vector space and likewise, you can also not divide by a vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vvec{v}-\vvec{w}\)</span></p></li>
+</ul>
+<p>However, the vector-vector product is not per se defined in a vector space and likewise, you can also not divide by a vector.</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\vvec{v}\cdot \vvec{w}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\alpha/\vvec{v}\)</span></p></li>
 </ul>
@@ -716,10 +734,10 @@ whose addition and the scalar multiplication are defined for <span class="math n
      &amp;2\vvec{v} &amp;= \begin{pmatrix}1\\3\end{pmatrix}
  \end{align*}\]</div>
 </section>
-</div><p>Are there other important vector spaces next to <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>?
-Yes, the vector space of matrices <span class="math notranslate nohighlight">\(\mathbb{R}^{n\times d}.\)</span>
-Why are matrices important?
-Because data is represented as a matrix. A data table of <span class="math notranslate nohighlight">\(n\)</span> observations of <span class="math notranslate nohighlight">\(d\)</span> features is represented by a <span class="math notranslate nohighlight">\((n\times d)\)</span> matrix.</p>
+</div><section id="matrix-spaces">
+<h2>Matrix Spaces<a class="headerlink" href="#matrix-spaces" title="Permalink to this headline">#</a></h2>
+<p>Next to the vector space of <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>, there are other important vector spaces, such as the vector space of matrices <span class="math notranslate nohighlight">\(\mathbb{R}^{n\times d}.\)</span>
+This vector space is relevant in machine learning because data is represented as a matrix. A data table of <span class="math notranslate nohighlight">\(n\)</span> observations of <span class="math notranslate nohighlight">\(d\)</span> features is represented by a <span class="math notranslate nohighlight">\((n\times d)\)</span> matrix.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>ID</p></th>
@@ -832,9 +850,9 @@ A_{n1} &amp;\ldots &amp; A_{nd}
 </div>
 </div>
 </div>
-<div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (The Vector Space <span class="math notranslate nohighlight">\(\mathbb{R}^{n\times d}\)</span>)</p>
-<section class="example-content" id="proof-content">
+<div class="proof proposition admonition" id="proposition-3">
+<p class="admonition-title"><span class="caption-number">Proposition 1 </span> (The Vector Space <span class="math notranslate nohighlight">\(\mathbb{R}^{n\times d}\)</span>)</p>
+<section class="proposition-content" id="proof-content">
 <p>The elements of the vector space <span class="math notranslate nohighlight">\(\mathbb{R}^{n\times d}\)</span> are <span class="math notranslate nohighlight">\((n\times d)\)</span>-dimensional matrices.</p>
 <p>The addition between matrices and the scalar multiplication are defined for <span class="math notranslate nohighlight">\(A,B\in\mathbb{R}^{n\times d}\)</span> and <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}\)</span> as</p>
 <div class="amsmath math notranslate nohighlight">
@@ -851,9 +869,17 @@ A_{n1}+B_{n1} &amp;\ldots &amp; A_{nd}+B_{nd}
 \end{pmatrix}
 \end{align*}\]</div>
 </section>
-</div><section id="matrix-operations">
+</div><div class="proof admonition" id="proof">
+<p>Proof. All vector space axioms follow directly from the corresponding properties of real numbers, applied entrywise.</p>
+</div>
+</section>
+<section id="matrix-operations">
 <h2>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">#</a></h2>
-<p>The <strong>transpose</strong> of a matrix changes row-vectors into column vectors and vice versa:</p>
+<p>In contrast to real numbers, matrices carry additional structure over the entries that are arranged in rows and columns. The rows of a matrix can be switched into columns with the transposed operator.</p>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>transpose</strong> of a matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span> is the matrix <span class="math notranslate nohighlight">\(A^\top\in\mathbb{R}^{d\times n}\)</span> obtained by exchanging rows and columns.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A&amp;= \begin{pmatrix}
@@ -877,7 +903,8 @@ A^\top&amp;= \begin{pmatrix}
 A_{1d} &amp;\ldots &amp; A_{nd} 
 \end{pmatrix}\in\mathbb{R}^{d\times n}
 \end{align*}\]</div>
-<p>The transpose of a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector has an interpretation as transpose of a <span class="math notranslate nohighlight">\((d\times 1)\)</span> matrix:</p>
+</section>
+</div><p>The transpose of a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector has an interpretation as transpose of a <span class="math notranslate nohighlight">\((d\times 1)\)</span> matrix:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     v&amp;= \begin{pmatrix}
@@ -890,9 +917,17 @@ v^\top&amp;= \begin{pmatrix}
         v_1 &amp; \ldots &amp; v_d
 \end{pmatrix}&amp;\in\mathbb{R}^{1\times d}
 \end{align*}\]</div>
-<p>The transpose of the transpose returns the original matrix.
-For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span> we have \alert{<span class="math notranslate nohighlight">\({A^\top}^\top = A\)</span></p>
-<div class="cell docutils container">
+<p>The transpose of the transpose returns the original matrix.</p>
+<div class="proof proposition admonition" id="proposition-5">
+<p class="admonition-title"><span class="caption-number">Proposition 2 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span>, we have
+<div class="math notranslate nohighlight">
+\[{(A^\top)}^\top = A.\]</div>
+
+For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span> we have <span class="math notranslate nohighlight">\({A^\top}^\top = A\)</span></p>
+</section>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span> <span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span> <span class="p">,</span> <span class="mi">5</span> <span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="n">A</span>
@@ -933,8 +968,12 @@ For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\ti
 </div>
 </div>
 </div>
+<div class="proof definition admonition" id="definition-6">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
+<section class="definition-content" id="proof-content">
 <p>A <strong>symmetric matrix</strong> is a matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span> such that <span class="math notranslate nohighlight">\(A^\top = A\)</span>.</p>
-<div class="cell docutils container">
+</section>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span> <span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">2</span> <span class="p">,</span> <span class="mi">4</span> <span class="p">,</span> <span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="n">A</span>
@@ -963,6 +1002,9 @@ For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\ti
 </div>
 </div>
 </div>
+<div class="proof definition admonition" id="definition-7">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+<section class="definition-content" id="proof-content">
 <p>A <strong>diagonal matrix</strong> is a symmetric matrix having only nonzero elements on the diagonal:
 <div class="math notranslate nohighlight">
 \[\begin{split}\diag(a_1,\ldots, a_n) = 
@@ -971,7 +1013,8 @@ For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\ti
       &amp;     &amp; \ddots &amp;\\
     0 &amp; 0   &amp; \ldots &amp; a_n\end{pmatrix}\end{split}\]</div>
 </p>
-<div class="cell docutils container">
+</section>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
@@ -985,16 +1028,23 @@ For any matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\ti
 </div>
 </div>
 </div>
-<p>Okay, great, we can add, scale and transpose matrices/data. Isn’t that kinda lame?
-Yah, it gets interesting with the matrix product.</p>
+<p>Okay, great, we can add, scale and transpose matrices, respectively data. That seems very uninteresting at first, those operations are not the most exciting ones.
+But good news, it gets more interesting with the establishment of the matrix product.</p>
 </section>
-<section id="vector-and-matrix-products">
-<h2>Vector and Matrix Products<a class="headerlink" href="#vector-and-matrix-products" title="Permalink to this headline">#</a></h2>
+<section id="vector-products">
+<h2>Vector Products<a class="headerlink" href="#vector-products" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="definition-8">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
+<section class="definition-content" id="proof-content">
 <p>The <strong>inner product</strong> of two vectors <span class="math notranslate nohighlight">\(\vvec{v},\vvec{w}\in\mathbb{R}^d\)</span> returns a scalar:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \vvec{v}^\top\vvec{w} = \begin{pmatrix}v_1&amp;\ldots &amp; v_d\end{pmatrix}\begin{pmatrix}w_1\\\vdots\\w_d\end{pmatrix}=\sum_{i=1}^dv_iw_i 
 \end{align*}\]</div>
+</section>
+</div><div class="proof definition admonition" id="definition-9">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
 <p>The <strong>outer product</strong> of two vectors <span class="math notranslate nohighlight">\(\vvec{v}\in\mathbb{R}^d\)</span> and <span class="math notranslate nohighlight">\(\vvec{w}\in\mathbb{R}^n\)</span> returns a (<span class="math notranslate nohighlight">\(d\times n\)</span>) matrix:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1009,6 +1059,9 @@ Yah, it gets interesting with the matrix product.</p>
      v_dw_1    &amp;\ldots &amp; v_dw_n     
     \end{pmatrix}
 \end{align*}\]</div>
+</section>
+</div><p>The inner product compresses two vectors into a scalar, measuring similarity, while the outer product expands them into a matrix capturing all pairwise interactions.</p>
+<p>Let’s see how we can compute these products in Python. We define two vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1017,6 +1070,7 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 </div>
+<p>We can compute the inner product over the <code class="docutils literal notranslate"><span class="pre">inner</span></code> and the <code class="docutils literal notranslate"><span class="pre">dot</span></code> function, or use the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
@@ -1053,6 +1107,7 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 </div>
+<p>For computing the outer product, we can use the <code class="docutils literal notranslate"><span class="pre">outer</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
@@ -1067,15 +1122,49 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 </div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator doesn’t work, the transposed doesn’t change anything for a numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((3,), (3,))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="nd">@w</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-products">
+<h2>Matrix Products<a class="headerlink" href="#matrix-products" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="definition-10">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
+<section class="definition-content" id="proof-content">
 <p>Given <span class="math notranslate nohighlight">\(A\in \mathbb{R}^{n\times r}\)</span> and <span class="math notranslate nohighlight">\(B\in\mathbb{R}^{r\times d}\)</span>, the matrix product <span class="math notranslate nohighlight">\(C=AB\in\mathbb{R}^{n\times d}\)</span> is defined as
 <div class="math notranslate nohighlight">
 \[\begin{split}C= \begin{pmatrix} A_{1\cdot}B_{\cdot 1}&amp;\ldots &amp; A_{1\cdot}B_{\cdot d}\\
 \vdots &amp; &amp; \vdots\\ A_{n\cdot}B_{\cdot 1}&amp;\ldots &amp; A_{n\cdot}B_{\cdot d} \end{pmatrix} = \begin{pmatrix}-&amp;A_{1\cdot}&amp;-\\&amp;\vdots&amp;\\-&amp;A_{n\cdot}&amp;-\end{pmatrix} \begin{pmatrix} \vert&amp; &amp; \vert\\ B_{\cdot 1}&amp;\ldots&amp;B_{\cdot d}\\\vert&amp; &amp; \vert \end{pmatrix}\end{split}\]</div>
 </p>
-<p>Every element <span class="math notranslate nohighlight">\(C_{ji}\)</span> is computed by the inner product of row <span class="math notranslate nohighlight">\(j\)</span> and column <span class="math notranslate nohighlight">\(i\)</span> (<em>row-times-column</em>)
+</section>
+</div><p>Every element <span class="math notranslate nohighlight">\(C_{ji}\)</span> is computed by the inner product of row <span class="math notranslate nohighlight">\(j\)</span> and column <span class="math notranslate nohighlight">\(i\)</span> (<em>row-times-column</em>)
 <div class="math notranslate nohighlight">
 \[C_{ji}=A_{j\cdot}B_{\cdot i} = \sum_{s=1}^r A_{js}B_{si}\]</div>
-</p>
+
+This is often referred to as the “row-times-column” rule.</p>
+<p>Let’s compute a matrix product in Python. We define two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -1084,6 +1173,7 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 </div>
+<p>The most simple way (imho) to compute the matrix product is the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="nd">@B</span>
@@ -1091,12 +1181,13 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.9, 1.1, 0.9, 0.7, 0.1],
-       [0.5, 0.7, 0.5, 0.4, 0.1]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.2, 1.4, 1.6, 1.9, 1.3],
+       [0.7, 0.5, 0.8, 0.9, 0.6]])
 </pre></div>
 </div>
 </div>
 </div>
+<p>The result of a multiplication of a <span class="math notranslate nohighlight">\(2\times 3\)</span>-dimensional matrix with a <span class="math notranslate nohighlight">\(3\times 5\)</span> dimensional matrix is a <span class="math notranslate nohighlight">\(2\times 5\)</span>-dimensional matrix. We can get the dimensionalities of a matrix via the <code class="docutils literal notranslate"><span class="pre">shape</span></code> property.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span><span class="nd">@B</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
@@ -1109,23 +1200,35 @@ Yah, it gets interesting with the matrix product.</p>
 </div>
 </div>
 </div>
-<p>Given <span class="math notranslate nohighlight">\(A\in \mathbb{R}^{n\times r}\)</span> and <span class="math notranslate nohighlight">\(B\in\mathbb{R}^{r\times d}\)</span>, we can also state the product <span class="math notranslate nohighlight">\(C=AB\)</span> in terms of the outer product:
-<div class="math notranslate nohighlight">
-\[\begin{split}C=\sum_{s=1}^r \begin{pmatrix} A_{1 s}B_{s1} &amp;\ldots &amp; A_{1 s}B_{sd}\\ \vdots &amp; &amp; \vdots\\ A_{n s}B_{s1} &amp;\ldots &amp; A_{n s}B_{sd} \end{pmatrix} = \begin{pmatrix} \vert &amp; &amp; \vert\\ A_{\cdot 1}&amp;\ldots &amp; A_{\cdot r}\\ \vert &amp; &amp; \vert \end{pmatrix} \begin{pmatrix} - &amp;B_{1\cdot } &amp; -\\  &amp; \vdots &amp; \\ -&amp; B_{r\cdot} &amp; -\end{pmatrix} \end{split}\]</div>
-
-The matrix product is the sum of outer products of corresponding column- and row-vectors (<em>column-times-row</em>):
-<div class="math notranslate nohighlight">
-\[\begin{split} C =\sum_{s=1}^r \begin{pmatrix} \vert\\ A_{\cdot s}\\ \vert  \end{pmatrix} \begin{pmatrix} - &amp; B_{s\cdot } &amp; -
-\end{pmatrix}=\sum_{s=1}^r A_{\cdot s}B_{s \cdot}\end{split}\]</div>
-</p>
+<div class="proof proposition admonition" id="proposition-11">
+<p class="admonition-title"><span class="caption-number">Proposition 3 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>Given <span class="math notranslate nohighlight">\(A\in \mathbb{R}^{n\times r}\)</span> and <span class="math notranslate nohighlight">\(B\in\mathbb{R}^{r\times d}\)</span>, the matrix product <span class="math notranslate nohighlight">\(C=AB\)</span> can be written as a sum of outer products:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+C&amp;=\sum_{s=1}^r \begin{pmatrix} A_{1 s}B_{s1} &amp;\ldots &amp; A_{1 s}B_{sd}\\ \vdots &amp; &amp; \vdots\\ A_{n s}B_{s1} &amp;\ldots &amp; A_{n s}B_{sd} \end{pmatrix} = \begin{pmatrix} \vert &amp; &amp; \vert\\ A_{\cdot 1}&amp;\ldots &amp; A_{\cdot r}\\ \vert &amp; &amp; \vert \end{pmatrix} \begin{pmatrix} - &amp;B_{1\cdot } &amp; -\\  &amp; \vdots &amp; \\ -&amp; B_{r\cdot} &amp; -\end{pmatrix}  \\
+&amp;= \sum_{s=1}^r \begin{pmatrix} \vert\\ A_{\cdot s}\\ \vert  \end{pmatrix} \begin{pmatrix} - &amp; B_{s\cdot } &amp; -
+\end{pmatrix}=\sum_{s=1}^r A_{\cdot s}B_{s \cdot}
+\end{align*}\]</div>
+</section>
+</div><p>This representation shows that matrix multiplication builds a matrix as a sum of rank-one components.</p>
+<div class="proof definition admonition" id="definition-12">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
+<section class="definition-content" id="proof-content">
 <p>The <strong>identity matrix</strong> <span class="math notranslate nohighlight">\(I\)</span> is a diagonal matrix having only ones on the diagonal:
 <div class="math notranslate nohighlight">
 \[\begin{split}I_3 = \begin{pmatrix} 1 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0&amp; 0&amp; 1 \end{pmatrix}\end{split}\]</div>
 </p>
+</section>
+</div><div class="proof proposition admonition" id="proposition-13">
+<p class="admonition-title"><span class="caption-number">Proposition 4 </span></p>
+<section class="proposition-content" id="proof-content">
 <p>Given <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times d}\)</span>, and <span class="math notranslate nohighlight">\(I_n\)</span> the <span class="math notranslate nohighlight">\((n\times n)\)</span> identity matrix and <span class="math notranslate nohighlight">\(I_d\)</span> the <span class="math notranslate nohighlight">\((d\times d)\)</span> identity matrix, then we have
 <div class="math notranslate nohighlight">
 \[I_n A = A = AI_d \]</div>
 </p>
+</section>
+</div><p>In Python, we can create the identity matrix over the <code class="docutils literal notranslate"><span class="pre">eye</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1141,33 +1244,33 @@ The matrix product is the sum of outer products of corresponding column- and row
 </div>
 </div>
 </div>
+<p>Multiplying <span class="math notranslate nohighlight">\(A\)</span> with the identity doesn’t change the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="nd">@I</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AI=&quot;</span><span class="p">,</span><span class="n">A</span><span class="nd">@I</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.1, 0.6, 0.7],
-       [0. , 0.5, 0.3]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AI= [[1.  0.8 0.9]
+ [0.3 0.2 0.8]] 
+A= [[1.  0.8 0.9]
+ [0.3 0.2 0.8]]
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.1, 0.6, 0.7],
-       [0. , 0.5, 0.3]])
-</pre></div>
-</div>
-</div>
-</div>
+<div class="proof proposition admonition" id="proposition-14">
+<p class="admonition-title"><span class="caption-number">Proposition 5 </span></p>
+<section class="proposition-content" id="proof-content">
 <p>We have for <span class="math notranslate nohighlight">\(A\in \mathbb{R}^{n\times r}\)</span>,  <span class="math notranslate nohighlight">\(B\in\mathbb{R}^{r\times d}\)</span> and <span class="math notranslate nohighlight">\(C=AB\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    C^\top=  B^\top A^\top
+\end{align*}\]</div>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. The proof follows from the definition of the transposed and the matrix product.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     C^\top&amp;= \begin{pmatrix}
@@ -1187,13 +1290,26 @@ The matrix product is the sum of outer products of corresponding column- and row
     B_{\cdot d}^\top A_{1\cdot}^\top &amp;\ldots &amp; B_{\cdot d}^\top A_{n\cdot}^\top 
     \end{pmatrix}= B^\top A^\top
 \end{align*}\]</div>
-<p>If we can multiply matrices, can we then also divide by them?
+</div>
+<p>Now, if we can multiply matrices, can we also divide by them?
 Just sometimes, if the matrix has an <em>inverse</em>.</p>
+<div class="proof definition admonition" id="definition-15">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<section class="definition-content" id="proof-content">
 <p>The <strong>inverse matrix</strong> to a matrix <span class="math notranslate nohighlight">\(A\in\mathbb{R}^{n\times n}\)</span> is a matrix <span class="math notranslate nohighlight">\(A^{-1}\)</span> satisfying
 <div class="math notranslate nohighlight">
 \[AA^{-1} = A^{-1}A = I\]</div>
-
-Diagonal matrices with nonzero elements on the diagonal have an inverse:</p>
+</p>
+</section>
+</div><div class="proof proposition admonition" id="proposition-16">
+<p class="admonition-title"><span class="caption-number">Proposition 6 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>A diagonal matrix with nonzero diagonal entries is invertible, and its inverse is obtained by inverting each diagonal entry. That is, given a vector <span class="math notranslate nohighlight">\(\mathbf{v}\in\mathbb{R}^n\)</span> where <span class="math notranslate nohighlight">\(v_i\neq 0\)</span> for all <span class="math notranslate nohighlight">\(1\leq i \leq n\)</span>, then
+<div class="math notranslate nohighlight">
+\[\diag(\mathbf{v})^{-1} = \diag\left(\frac{1}{v_1},\ldots, \frac{1}{v_n}\right)\]</div>
+</p>
+</section>
+</div><p>For example, we can easily check that the diagonal matrix having the numbers <span class="math notranslate nohighlight">\(1,2,3\)</span> on the diagonal has as inverse the diagonal matrix with fractions <span class="math notranslate nohighlight">\(1,\frac12,\frac13\)</span> on the diagonal. If we multiply both matrices, then we get the identity.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}\begin{pmatrix} 1&amp; 0 &amp; 0\\
 0 &amp; 2 &amp; 0\\
@@ -1201,6 +1317,7 @@ Diagonal matrices with nonzero elements on the diagonal have an inverse:</p>
 \begin{pmatrix}1&amp; 0 &amp; 0\\
 0 &amp; \frac12 &amp; 0\\
 0 &amp; 0 &amp; \frac13\end{pmatrix} = I\end{align*}\]</div>
+<p>In Python, we can define diagonal matrices over the <code class="docutils literal notranslate"><span class="pre">diag</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1216,7 +1333,9 @@ Diagonal matrices with nonzero elements on the diagonal have an inverse:</p>
 </div>
 </div>
 </div>
-<p>In Machine Learning, almost everything is formulated in matrix notation, because matrix multiplication is computable fast and can be accelerated with Graphics Processing Units (GPUs).</p>
+<p>So far, we have developed a set of operations that allow us to combine and transform vectors and matrices in a systematic way. These constructions are not just algebraic conveniences—they form the foundation for many practical applications.</p>
+<p>In particular, machine learning models are typically expressed in matrix notation, where data and parameters are organized as matrices and vectors, and learning corresponds to applying sequences of linear transformations. The main advantage of formalizing operations in matrix notation is that matrix multiplication is highly parallizable and is hence computable fast and can be accelerated with Graphics Processing Units (GPUs).</p>
+<p>Let’s have a look at the time being used when computing a matrix multiplication the naive way, and when we use the numpy implementation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">matrix_mult</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
@@ -1241,12 +1360,13 @@ Diagonal matrices with nonzero elements on the diagonal have an inverse:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time of our naive implementation in seconds: 1.673232078552246
-Execution time of the numpy implementation in seconds: 0.0026569366455078125
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time of our naive implementation in seconds: 1.917952060699463
+Execution time of the numpy implementation in seconds: 0.011477947235107422
 </pre></div>
 </div>
 </div>
 </div>
+<p>The numpy implementation is more than 100 times faster!</p>
 </section>
 </section>
 

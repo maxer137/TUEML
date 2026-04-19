@@ -327,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="neuralnets_sgd.html">
-     SGD
+     Training
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neuralnets_architecture.html">
-     Architecture
+    <a class="reference internal" href="neuralnets_pooling.html">
+     Pooling
     </a>
    </li>
   </ul>
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="dim_reduction_mf.html">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -748,7 +743,7 @@ title="Print to PDF"
 <h2>Approximating the Bayes Classifier<a class="headerlink" href="#approximating-the-bayes-classifier" title="Permalink to this headline">#</a></h2>
 <p>Naïve Bayes is a probabilistic classifier, and before we delve into its mechanics, we establish first some terminology to describe the probabilties that we are dealing with.</p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Probabilistic Machine Learning Speak)</p>
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Probabilistic Machine Learning Speak)</p>
 <section class="definition-content" id="proof-content">
 <p>Given two random variables <span class="math notranslate nohighlight">\(\vvec{x}\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, where <span class="math notranslate nohighlight">\(\vvec{x}\)</span> is the random variable of the observations of a dataset and <span class="math notranslate nohighlight">\(y\)</span> is the random variable of the class label. We define then the following probabilities:</p>
 <ul class="simple">
@@ -787,7 +782,7 @@ title="Print to PDF"
 <h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">#</a></h2>
 <p>Using Bayes’ Theorem and the naive assumption, the prediction is made by choosing the class  that maximizes the posterior probability <span class="math notranslate nohighlight">\(p(y\mid x)\)</span>.</p>
 <div class="proof definition admonition" id="definition-3">
-<p class="admonition-title"><span class="caption-number">Definition 21 </span> (NB classifier)</p>
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (NB classifier)</p>
 <section class="definition-content" id="proof-content">
 <p>The naive Bayes classifier computes the probabilities that observation <span class="math notranslate nohighlight">\(\vvec{x}\)</span> occurs together with label <span class="math notranslate nohighlight">\(y\)</span> under the naive Bayes assumption:</p>
 <div class="math notranslate nohighlight" id="equation-f-nb">
@@ -856,7 +851,7 @@ p(\mathtt{x}_k = a\mid y=l) = \frac{\lvert\{ 1\leq i \leq n\mid {x_i}_k = a, y_i
 <h3>Implementation Practice: Laplace Smoothing<a class="headerlink" href="#implementation-practice-laplace-smoothing" title="Permalink to this headline">#</a></h3>
 <p>Using the standard estimation of multinomial probabilities has the undesirable effect that some probabilities <span class="math notranslate nohighlight">\(p(\mathtt{x}_k = a\mid y=l)\)</span> are equal to zero if the feature <span class="math notranslate nohighlight">\(\mathtt{x}_k\)</span> is never equal to value <span class="math notranslate nohighlight">\(a\)</span> in class <span class="math notranslate nohighlight">\(y\)</span>. In this case, the classifier probability <span class="math notranslate nohighlight">\(f_{nb}(\vvec{x})_y\)</span> is equal to zero for all observations <span class="math notranslate nohighlight">\(\vvec{x}\)</span> where <span class="math notranslate nohighlight">\(\mathtt{x}_k=a\)</span>. In particular if we have many classes, a high-dimensional feature space or features with a large domain (if <span class="math notranslate nohighlight">\(\mathcal{X}_k\)</span> is large), this effect might happen quite often. Laplace smoothing mitigates this effect by adding <span class="math notranslate nohighlight">\(\alpha\)</span> imaginary observations for each value of <span class="math notranslate nohighlight">\(\mathtt{x}_k\)</span> and class <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Laplace smoothing)</p>
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Laplace smoothing)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a dataset <span class="math notranslate nohighlight">\(\mathcal{D}=\{(\vvec{x}_i,y_i)\mid 1\leq i\leq n\}\)</span> and feature <span class="math notranslate nohighlight">\(\mathtt{x}_k\)</span> attaining values in the finite set <span class="math notranslate nohighlight">\(\mathcal{X}_k\)</span>. The class-conditioned multinomial probability estimations with Laplace smoothing with variable <span class="math notranslate nohighlight">\(\alpha&gt; 0\)</span> are then given as</p>
 <div class="math notranslate nohighlight" id="equation-freq-approx3">
@@ -874,7 +869,7 @@ p(\mathtt{x}_k = a\mid y=l) = \frac{\lvert\{ 1\leq i \leq n\mid {x_i}_k = a, y_i
 <section id="training">
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h3>
 <div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 18 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 17 </span></p>
 <section class="example-content" id="proof-content">
 <p>We consider the following toy dataset, where the task is to predict whether the email is spam, based on the words “free”, “win”, “offer” and “meeting”.</p>
 <table class="colwidths-auto table">

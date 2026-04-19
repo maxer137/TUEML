@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Matrix Completion" href="dim_reduction_matrix_completion.html" />
+    <link rel="next" title="Principal Component Analysis" href="dim_reduction_pca.html" />
     <link rel="prev" title="Dimensionality Reduction Techniques" href="dim_reduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -355,11 +355,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Low Rank Matrix Factorization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dim_reduction_matrix_completion.html">
-     Matrix Completion
     </a>
    </li>
    <li class="toctree-l2">
@@ -945,7 +940,7 @@ However, for <span class="math notranslate nohighlight">\(\alpha=1/2\)</span> th
 </div>
 <p>We observe from the proof that there are infinitely many global minimizers for the low-dimensional matrix factorization task. Let’s explore this set of global minimizers by means of an example in one dimension.</p>
 <div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 21 </span> (One-dimensional matrix factorization   )</p>
+<p class="admonition-title"><span class="caption-number">Example 20 </span> (One-dimensional matrix factorization   )</p>
 <section class="example-content" id="proof-content">
 <p>The most <em>easy</em> case of a low-dimensional matrix factorization is the factorization of a single number. Let’s take for example the factorization of the number one into a product of two factors <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, having the objective function  <span class="math notranslate nohighlight">\(f(x_1,x_2) = (1-x_1x_2)^2\)</span>. We plot the graph of the objective function together with three solutions: <span class="math notranslate nohighlight">\((x_1,x_2)=(2,0.5)\)</span>, <span class="math notranslate nohighlight">\((1,1)\)</span>, and <span class="math notranslate nohighlight">\((0.5,2)\)</span>.</p>
 <div class="figure" style="text-align: center"><p><img  src="_images/tikz-8e5b26bf64acbe9c637716e4bc0ecf64fe70aafb.svg" alt="Figure made with TikZ" /></p>
@@ -1356,10 +1351,10 @@ Today, most recommendation systems rely not on explicit ratings, but on <strong>
             <p class="prev-next-title">Dimensionality Reduction Techniques</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="dim_reduction_matrix_completion.html" title="next page">
+    <a class='right-next' id="next-link" href="dim_reduction_pca.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Matrix Completion</p>
+        <p class="prev-next-title">Principal Component Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
