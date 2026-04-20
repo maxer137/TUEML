@@ -925,10 +925,10 @@ Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5, -0.4, -0.7, -0.3],
-       [-0.3, -0.7,  0.7, -0.1],
-       [-0.7,  0.6,  0.3, -0.2],
-       [-0.4, -0. , -0.1,  0.9]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.7, -0.1, -0.5, -0.6],
+       [-0.6, -0.5,  0.4,  0.5],
+       [-0.3,  0.5,  0.7, -0.3],
+       [-0.3,  0.6, -0.3,  0.6]])
 </pre></div>
 </div>
 </div>
@@ -941,10 +941,10 @@ Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.0e+00,  6.6e-17, -2.4e-16, -1.1e-16],
-       [ 6.6e-17,  1.0e+00, -9.2e-18,  3.2e-17],
-       [-2.4e-16, -9.2e-18,  1.0e+00, -4.7e-17],
-       [-1.1e-16,  3.2e-17, -4.7e-17,  1.0e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.0e+00, -1.0e-16, -1.5e-16, -1.3e-16],
+       [-1.0e-16,  1.0e+00, -7.2e-17, -5.0e-17],
+       [-1.5e-16, -7.2e-17,  1.0e+00, -1.5e-16],
+       [-1.3e-16, -5.0e-17, -1.5e-16,  1.0e+00]])
 </pre></div>
 </div>
 </div>
@@ -957,8 +957,8 @@ Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.6, 0. ],
-       [0. , 0.5]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.5, 0. ],
+       [0. , 0.9]])
 </pre></div>
 </div>
 </div>
@@ -972,8 +972,8 @@ Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.6, 0. ],
-       [0. , 0.5],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.5, 0. ],
+       [0. , 0.9],
        [0. , 0. ],
        [0. , 0. ]])
 </pre></div>
@@ -988,14 +988,14 @@ Taking square roots yields <span class="math notranslate nohighlight">\(\|X\vvec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.4, 0.7],
-        [0.1, 0.6],
-        [1. , 0.5],
-        [0.4, 0.4]]),
- array([[0.4, 0.7],
-        [0.1, 0.6],
-        [1. , 0.5],
-        [0.4, 0.4]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.5, 0.8],
+        [0.1, 1. ],
+        [0.6, 0.1],
+        [0.7, 0.1]]),
+ array([[0.5, 0.8],
+        [0.1, 1. ],
+        [0.6, 0.1],
+        [0.7, 0.1]]))
 </pre></div>
 </div>
 </div>
@@ -1076,14 +1076,6 @@ A(V\Sigma^{-1}U^\top)
 \[ A^{-1} = V\Sigma^{-1}U^\top. \]</div>
 </p>
 </div>
-</div>
-<div class="proof admonition" id="proof">
-<p>Proof. Since the matrices <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> of the SVD are orthogonal, we have:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-AA^{-1} &amp;= U\Sigma V^\top V\Sigma^{-1} U^\top = U\Sigma \Sigma^{-1} U^\top = UU^\top = I\\
-A^{-1}A &amp;= V \Sigma^{-1} U^\top U\Sigma V^\top = V \Sigma^{-1} \Sigma V^\top = V V^\top = I
-\end{align*}\]</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
