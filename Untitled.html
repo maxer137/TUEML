@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Optimization Problems &#8212; Data Mining and Machine Learning Jupyter Book</title>
+    <title>Q1 &#8212; Data Mining and Machine Learning Jupyter Book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Convex Optimization" href="optimization_convex.html" />
-    <link rel="prev" title="Optimization" href="optimization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notation.html">
    Notation
@@ -149,18 +147,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="optimization.html">
    Optimization
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optimization_problems.html">
      Optimization Problems
     </a>
    </li>
@@ -501,7 +499,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://sibylse.github.io/TUEML/intro.html/issues/new?title=Issue%20on%20page%20%2Foptimization_problems.html&body=Your%20issue%20content%20here."
+        <a href="https://sibylse.github.io/TUEML/intro.html/issues/new?title=Issue%20on%20page%20%2FUntitled.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -518,7 +516,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/TUEML/intro.html/edit/master/optimization_problems.ipynb"
+        <a href="https://github.com/TUEML/intro.html/edit/master/Untitled.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -546,7 +544,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/optimization_problems.ipynb"
+        <a href="_sources/Untitled.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -605,14 +603,60 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unconstrained-optimization-problems">
-   Unconstrained Optimization Problems
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Q1
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constrained-optimization-problems">
-   Constrained Optimization Problems
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-notes-you-have-seen-that-ridge-regression-corresponds-to-solving-hat-beta-text-ridge">
+   In the notes, you have seen that ridge regression corresponds to solving
+$$
+\hat{\beta}_{\text{ridge}}
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arg-min-beta-in-mathbb-r-p-left-y-x-beta-2-lambda-beta-2-right-we-now-consider-a-probabilistic-view-of-linear-regression-and-show-that-it-leads-to-the-same-solution-define-the-dataset-as-x-x-1-n-and-y-y-1-n-and-assume-the-following-model-y-i-x-i-t-beta-varepsilon-i-qquad-varepsilon-i-overset-text-i-i-d-sim-mathcal-n-0-sigma-2-or-equivalently-y-i-mid-x-i-beta-sim-mathcal-n-x-i-t-beta-sigma-2-assume-also-the-prior-beta-sim-mathcal-n-0-sigma-p-2-i-p-we-define-the-map-estimator-by-hat-beta-text-map">
+   \arg\min_{\beta\in\mathbb{R}^p}
+\left{
+|y-X\beta|^2+\lambda|\beta|^2
+\right}.
+   <div class="math notranslate nohighlight">
+    \[
+We now consider a probabilistic view of linear regression and show that it leads to the same solution. Define the dataset as $X = \{ x_{1:n}\}$ and $y = \{y_{1:n}\}$, and assume the following model:
+\]
+   </div>
+   y_i = x_i^T\beta + \varepsilon_i,
+\qquad
+\varepsilon_i \overset{\text{i.i.d.}}{\sim}\mathcal N(0,\sigma^2),
+   <div class="math notranslate nohighlight">
+    \[
+or equivalently,
+\]
+   </div>
+   y_i\mid x_i,\beta \sim \mathcal N(x_i^T\beta,\sigma^2).
+   <div class="math notranslate nohighlight">
+    \[
+Assume also the prior
+\]
+   </div>
+   \beta \sim \mathcal N(0,\sigma_p^2 I_p).
+   <div class="math notranslate nohighlight">
+    \[
+We define the MAP estimator by
+\]
+   </div>
+   \hat\beta_{\text{MAP}}
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q2">
+   Q2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q3-cross-validation-folds">
+   Q3 - Cross-Validation Folds
   </a>
  </li>
 </ul>
@@ -624,7 +668,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Optimization Problems</h1>
+                <h1>Q1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -634,14 +678,60 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unconstrained-optimization-problems">
-   Unconstrained Optimization Problems
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Q1
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constrained-optimization-problems">
-   Constrained Optimization Problems
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-notes-you-have-seen-that-ridge-regression-corresponds-to-solving-hat-beta-text-ridge">
+   In the notes, you have seen that ridge regression corresponds to solving
+$$
+\hat{\beta}_{\text{ridge}}
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arg-min-beta-in-mathbb-r-p-left-y-x-beta-2-lambda-beta-2-right-we-now-consider-a-probabilistic-view-of-linear-regression-and-show-that-it-leads-to-the-same-solution-define-the-dataset-as-x-x-1-n-and-y-y-1-n-and-assume-the-following-model-y-i-x-i-t-beta-varepsilon-i-qquad-varepsilon-i-overset-text-i-i-d-sim-mathcal-n-0-sigma-2-or-equivalently-y-i-mid-x-i-beta-sim-mathcal-n-x-i-t-beta-sigma-2-assume-also-the-prior-beta-sim-mathcal-n-0-sigma-p-2-i-p-we-define-the-map-estimator-by-hat-beta-text-map">
+   \arg\min_{\beta\in\mathbb{R}^p}
+\left{
+|y-X\beta|^2+\lambda|\beta|^2
+\right}.
+   <div class="math notranslate nohighlight">
+    \[
+We now consider a probabilistic view of linear regression and show that it leads to the same solution. Define the dataset as $X = \{ x_{1:n}\}$ and $y = \{y_{1:n}\}$, and assume the following model:
+\]
+   </div>
+   y_i = x_i^T\beta + \varepsilon_i,
+\qquad
+\varepsilon_i \overset{\text{i.i.d.}}{\sim}\mathcal N(0,\sigma^2),
+   <div class="math notranslate nohighlight">
+    \[
+or equivalently,
+\]
+   </div>
+   y_i\mid x_i,\beta \sim \mathcal N(x_i^T\beta,\sigma^2).
+   <div class="math notranslate nohighlight">
+    \[
+Assume also the prior
+\]
+   </div>
+   \beta \sim \mathcal N(0,\sigma_p^2 I_p).
+   <div class="math notranslate nohighlight">
+    \[
+We define the MAP estimator by
+\]
+   </div>
+   \hat\beta_{\text{MAP}}
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q2">
+   Q2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q3-cross-validation-folds">
+   Q3 - Cross-Validation Folds
   </a>
  </li>
 </ul>
@@ -654,109 +744,210 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="optimization-problems">
-<h1>Optimization Problems<a class="headerlink" href="#optimization-problems" title="Permalink to this headline">#</a></h1>
-<figure class="align-left" id="mountain">
-<a class="reference internal image-reference" href="_images/mountain.jpg"><img alt="_images/mountain.jpg" src="_images/mountain.jpg" style="height: 200px;" /></a>
-</figure>
-<p>Imagine yourself standing in the middle of a vast, rugged mountain landscape. Your goal is to reach the lowest point in this terrain—a hidden valley where the air is still. Easy, you might think. I’ll just look at the map and see where the lowest point is. But what if the map is infinitely big? And what if the mountain landscape is in a high-dimensional hyperspace, where you can’t see anything but three dimensional projections of this hyperspace? The optimization challenges in machine learning are a bit like that: the task to find the lowest valley an infinitely large space extending within hundreds of dimensions. What we need to solve this task is to get some hints where to look for the valley, and this is what optimization theory can deliver.</p>
-<p>We start with looking at vanilla optimization problems that consist only of an objective function that is to be minimized, having no additional constraints on the solution.</p>
-<section id="unconstrained-optimization-problems">
-<h2>Unconstrained Optimization Problems<a class="headerlink" href="#unconstrained-optimization-problems" title="Permalink to this headline">#</a></h2>
-<p>We define an optimization problem, also called <em>the objective</em> as follows.</p>
-<div class="proof definition admonition" id="objective">
-<p class="admonition-title"><span class="caption-number">Definition 16 </span> (unconstrained optimization objective)</p>
-<section class="definition-content" id="proof-content">
-<p>Given an <strong>objective function</strong> <span class="math notranslate nohighlight">\(f:\mathbb{R}^n\rightarrow \mathbb{R}\)</span>, the <strong>objective of an unconstrained optimization problem</strong> is:
-<div class="math notranslate nohighlight">
-\[\begin{align*}
-        \min_{x\in\mathbb{R}^n} f(\vvec{x})
-    \end{align*}\]</div>
-
-We say that:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \vvec{x}^*\in\argmin_{x\in\mathbb{R}^n}f(\vvec{x})\)</span> is a <strong>minimizer</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \min_{\vvec{x}\in\mathbb{R}^n}f(\vvec{x})\)</span> is the <strong>minimum</strong></p></li>
-</ul>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.64232277, 0.88440461],
+       [0.64988677, 0.56686284],
+       [0.21225523, 0.01046098]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68564948, 0.17992533],
+       [0.88078922, 0.9280058 ],
+       [0.2625701 , 0.473823  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.44040827, 0.1591268 ],
+       [0.57241326, 0.52605201],
+       [0.05573188, 0.00495665]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">*</span><span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.4282474 , 0.89962667],
+       [4.40394612, 4.64002902],
+       [1.31285048, 2.369115  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="nd">@B</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.59953507, 1.38648359, 0.587706  ],
+       [0.54758751, 1.09846527, 0.43923348],
+       [0.14741488, 0.19665997, 0.06068853]])
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="q1">
+<h1>Q1<a class="headerlink" href="#q1" title="Permalink to this headline">#</a></h1>
 </section>
-</div><p>A minimizer can be <em>local</em> or <em>global</em>. Following our analogy, the global minimizer is the lowest valley and a local minimizer can be any valley.</p>
-<div class="proof definition admonition" id="minimizers">
-<p class="admonition-title"><span class="caption-number">Definition 17 </span> (minimizers)</p>
-<section class="definition-content" id="proof-content">
-<p>Given an unconstrained objective as defined above. A <strong>global minimizer</strong> is a vector <span class="math notranslate nohighlight">\(\vvec{x}^*\)</span> satisfying
+<section class="tex2jax_ignore mathjax_ignore" id="in-the-notes-you-have-seen-that-ridge-regression-corresponds-to-solving-hat-beta-text-ridge">
+<h1>In the notes, you have seen that ridge regression corresponds to solving
+$$
+\hat{\beta}_{\text{ridge}}<a class="headerlink" href="#in-the-notes-you-have-seen-that-ridge-regression-corresponds-to-solving-hat-beta-text-ridge" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="arg-min-beta-in-mathbb-r-p-left-y-x-beta-2-lambda-beta-2-right-we-now-consider-a-probabilistic-view-of-linear-regression-and-show-that-it-leads-to-the-same-solution-define-the-dataset-as-x-x-1-n-and-y-y-1-n-and-assume-the-following-model-y-i-x-i-t-beta-varepsilon-i-qquad-varepsilon-i-overset-text-i-i-d-sim-mathcal-n-0-sigma-2-or-equivalently-y-i-mid-x-i-beta-sim-mathcal-n-x-i-t-beta-sigma-2-assume-also-the-prior-beta-sim-mathcal-n-0-sigma-p-2-i-p-we-define-the-map-estimator-by-hat-beta-text-map">
+<h1>\arg\min_{\beta\in\mathbb{R}^p}
+\left{
+|y-X\beta|^2+\lambda|\beta|^2
+\right}.
 <div class="math notranslate nohighlight">
 \[
-  f(\vvec{x}^*)\leq f(\vvec{x}) \text{ for all } \vvec{x}\in\mathbb{R}^n
+We now consider a probabilistic view of linear regression and show that it leads to the same solution. Define the dataset as $X = \{ x_{1:n}\}$ and $y = \{y_{1:n}\}$, and assume the following model:
 \]</div>
 
-A <strong>local minimizer</strong> is a vector <span class="math notranslate nohighlight">\(\vvec{x}_0\)</span> satisfying for an <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>
+y_i = x_i^T\beta + \varepsilon_i,
+\qquad
+\varepsilon_i \overset{\text{i.i.d.}}{\sim}\mathcal N(0,\sigma^2),
 <div class="math notranslate nohighlight">
-\[f(\vvec{x}_0)\leq f(\vvec{x}) \text{ for all } \vvec{x}\in\mathcal{N}_\epsilon(\vvec{x}_0),\]</div>
+\[
+or equivalently,
+\]</div>
 
-where <span class="math notranslate nohighlight">\(\mathcal{N}_\epsilon(\vvec{x}_0) = \{\vvec{x}\in\mathbb{R}^n\vert \lVert x-x_0\rVert\leq \epsilon\}\)</span></p>
-</section>
-</div><p>In an unconstrained optimization problem, minimizers occur at points where the function cannot be decreased in any direction. In many practical situations, however, we are not free to search over the entire space but need to stay in a feasible region defined by constraints. This leads to a <em>constrained optimization problem</em>.</p>
-</section>
-<section id="constrained-optimization-problems">
-<h2>Constrained Optimization Problems<a class="headerlink" href="#constrained-optimization-problems" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="constr_objective">
-<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Constrained Objective)</p>
-<section class="definition-content" id="proof-content">
-<p>Given an objective function <span class="math notranslate nohighlight">\(f:\mathbb{R}^d\rightarrow \mathbb{R}\)</span> and constraint functions <span class="math notranslate nohighlight">\(c_i,g_k:\mathbb{R}^d\rightarrow \mathbb{R}\)</span>, then  the <strong>objective</strong> of a constrained optimization problem is</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \min_{x\in\mathbb{R}^n}&amp;\ f(\vvec{x}) \\
-    \text{s.t. }&amp; c_i(\vvec{x}) =0  &amp;\text{ for } 1\leq i \leq m,\\
-                &amp; g_k(\vvec{x})\geq 0 &amp;\text{ for }1\leq k\leq l
-\end{align*}\]</div>
-<p>We call the set of vectors satisfying the constraints the <strong>feasible set</strong>:
+y_i\mid x_i,\beta \sim \mathcal N(x_i^T\beta,\sigma^2).
 <div class="math notranslate nohighlight">
-\[\mathcal{C}=\{\vvec{x}\mid c_i(\vvec{x})=0, g_k(\vvec{x})\geq 0 \text{ for }1\leq i\leq m, 1\leq k\leq l\}.\]</div>
-</p>
+\[
+Assume also the prior
+\]</div>
+
+\beta \sim \mathcal N(0,\sigma_p^2 I_p).
+<div class="math notranslate nohighlight">
+\[
+We define the MAP estimator by
+\]</div>
+
+\hat\beta_{\text{MAP}}<a class="headerlink" href="#arg-min-beta-in-mathbb-r-p-left-y-x-beta-2-lambda-beta-2-right-we-now-consider-a-probabilistic-view-of-linear-regression-and-show-that-it-leads-to-the-same-solution-define-the-dataset-as-x-x-1-n-and-y-y-1-n-and-assume-the-following-model-y-i-x-i-t-beta-varepsilon-i-qquad-varepsilon-i-overset-text-i-i-d-sim-mathcal-n-0-sigma-2-or-equivalently-y-i-mid-x-i-beta-sim-mathcal-n-x-i-t-beta-sigma-2-assume-also-the-prior-beta-sim-mathcal-n-0-sigma-p-2-i-p-we-define-the-map-estimator-by-hat-beta-text-map" title="Permalink to this headline">#</a></h1>
+<p>\arg\max_\beta p(\beta\mid X,y).
+$$</p>
+<p><strong>Question:</strong> Show that <span class="math notranslate nohighlight">\(\hat\beta_{\text{MAP}}\)</span> is equal to the ridge regression solution for a suitable choice of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>You may use the following facts:</p>
+<ul class="simple">
+<li><p>Bayes’ rule:
+<div class="math notranslate nohighlight">
+\[
+p(\beta\mid X,y)\propto p(y\mid X,\beta)p(\beta)
+\]</div>
+</p></li>
+<li><p>Conditional independence:
+<div class="math notranslate nohighlight">
+\[
+p(y\mid X,\beta)=\prod_{i=1}^n p(y_i\mid x_i,\beta)
+\]</div>
+</p></li>
+<li><p>Applying <span class="math notranslate nohighlight">\(\log\)</span> preserves the maximizer</p></li>
+<li><p>Terms that do not depend on <span class="math notranslate nohighlight">\(\beta\)</span> may be ignored when optimizing over <span class="math notranslate nohighlight">\(\beta\)</span></p></li>
+</ul>
+<p>Derive the corresponding optimization problem explicitly, and state the relationship between <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(\sigma^2\)</span>, and <span class="math notranslate nohighlight">\(\sigma_p^2\)</span>.</p>
+<p><strong>Remark</strong>: Your score will be based only on your response in the field ” <span class="math notranslate nohighlight">\(\lambda:=\ldots\)</span> “. However, to receive credit, you must still upload your derivation.</p>
+<p>==<strong>Ans:</strong> <span class="math notranslate nohighlight">\(\lambda := \sigma^2/\sigma^2_p\)</span>.==</p>
+<p>==Solution from the book:==</p>
+<ul>
+<li><img src="assets/image-20260410153635541.png" alt="image-20260410153635541" style="zoom:50%;" />
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat \beta &amp;= \arg \max -\frac12 \left[ \sigma_p^{-2} ||\beta||^2_2 + \sigma^{-2} ||y - X\beta||^2_2 \right] \\
+%
+&amp;= \arg \min \left[ \sigma_p^{-2} ||\beta||^2_2 + \sigma^{-2} ||y - X\beta||^2_2 \right] \\
+%
+&amp;= \arg \min \sigma^2 \left[ \sigma_p^{-2} ||\beta||^2_2 + \sigma^{-2} ||y - X\beta||^2_2 \right] \\
+%
+&amp;= \arg \min  \left[ \frac{\sigma^2}{\sigma_p^{2}} ||\beta||^2_2 + ||y - X\beta||^2_2 \right] \\
+\end{align}
+\end{split}\]</div>
 </section>
-</div><p>Adding constraints to an optimization problem often makes it more challenging. Now, there are two types of minimizers to consider:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="q2">
+<h1>Q2<a class="headerlink" href="#q2" title="Permalink to this headline">#</a></h1>
+<img src="assets/calc bias larger.drawio_05_chromatic_shift-1776674560673-2.png" alt="calc bias larger.drawio_05_chromatic_shift" style="zoom:50%;" />
+<p>Based on the figure, consider the true regression function marked as <span class="math notranslate nohighlight">\(f^*\)</span> (in blue). Suppose we fit two regression models to different independent and identically distributed (i.i.d.) datasets sampled from the true regression function, <span class="math notranslate nohighlight">\(\mathcal{D}_1, \mathcal{D}_2\)</span>, resulting in the two red-tinted models in the figure.</p>
+<p>For which point <span class="math notranslate nohighlight">\(x_0 \in \mathbb{N}\)</span> do you expect the squared bias of the average predictor relative to <span class="math notranslate nohighlight">\(f^*(x_0)\)</span> to be the largest?</p>
 <ol class="simple">
-<li><p>Interior Minimizers: Points that lie in a “valley” of the objective function, where the function value only increases or remains the same when moving in any direction.</p></li>
-<li><p>Boundary Minimizers: Points on the edge of the feasible set, where the function value increases or stays the same when moving <em>inward</em> along the feasible region (the function value might decrease when moving out of the feasible set).</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_0 = ...\)</span></p></li>
 </ol>
-<p>Boundary minimizers can be difficult to identify because finding minimizers of a (smooth) function is more easy than finding minimizers of a function and having to check all points on the boundary of the feasible set. Luckily, there is a way to transform a constrained objective into an (almost) unconstrained one, that works for many function classes. This is done by the Lagrangian function.</p>
-<div class="proof definition admonition" id="lagrangian">
-<p class="admonition-title"><span class="caption-number">Definition 19 </span> (Lagrangian)</p>
-<section class="definition-content" id="proof-content">
-<p>Given a constrained optimization objective as in <a class="reference internal" href="#constr_objective">Definition 18</a>, then  the <strong>Lagrangian function</strong> is defined as
-<div class="math notranslate nohighlight">
-\[\mathcal{L}(\vvec{x},\bm\lambda,\bm\mu) = f(\vvec{x}) - \sum_{i=1}^m\bm\lambda_i c_i(\vvec{x}) - \sum_{k=1}^l\bm\mu_k g_k(\vvec{x}).\]</div>
-
-The parameters <span class="math notranslate nohighlight">\(\lambda_i\in\mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\mu_k\geq 0\)</span> are called <em>Lagrange multipliers</em>.</p>
+<p>At this point <span class="math notranslate nohighlight">\(x_0\)</span>, compute:</p>
+<ol class="simple">
+<li><p>The sample mean of the predictions <span class="math notranslate nohighlight">\(f_{i}\left(x_0\right)\)</span>.</p></li>
+<li><p>The squared bias relative to <span class="math notranslate nohighlight">\(f^*\left(x_0\right)\)</span>.</p></li>
+<li><p>The variance of the predictors at <span class="math notranslate nohighlight">\(x_0\)</span> (note that we use in this lecture the biased sample variance, as it is computed by numpy).</p></li>
+</ol>
+<p>==Answers:==</p>
+<ol class="simple">
+<li><p>x_0=21</p></li>
+<li></li>
+<li><p>f1 = 11, f2=9, f*=7. -&gt; sample mean 10</p></li>
+<li><p><span class="math notranslate nohighlight">\(bias^2\)</span> = <span class="math notranslate nohighlight">\((7-10)^2=9\)</span></p></li>
+<li><p>variance = <span class="math notranslate nohighlight">\(\frac{1}{2}((10 - 11)^2 + ((10-9)^2))=1\)</span></p></li>
+</ol>
 </section>
-</div><p>The Lagrangian introduces an adversarial approach to handling constraints. We remove the constraints on <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, allowing us to minimize over all <span class="math notranslate nohighlight">\(\vvec{x}\in\mathbb{R}^d\)</span>, while simultaneously maximizing over the Lagrange multipliers <span class="math notranslate nohighlight">\(\bm\lambda\in\mathbb{R}^m\)</span> and <span class="math notranslate nohighlight">\(\bm\mu\geq\vvec{0}\)</span>.</p>
-<p>Imagine a scenario where you are trying to minimize the Lagrangian by adjusting <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, while an “adversary” seeks to maximize it by adjusting <span class="math notranslate nohighlight">\(\bm\lambda\)</span> and <span class="math notranslate nohighlight">\(\bm\mu\)</span>. If <span class="math notranslate nohighlight">\(\vvec{x}\)</span> lies outside the feasible set, the adversary can exploit this by driving up the Lagrangian value. For instance, if a constraint <span class="math notranslate nohighlight">\(c_i(\vvec{x})=0.1\neq 0\)</span> is unmet, the adversary could set <span class="math notranslate nohighlight">\(\lambda_i=-10000\)</span>, raising the Lagrangian by <span class="math notranslate nohighlight">\(-(-10000)\cdot 0.1=1000\)</span>.</p>
-<p>To prevent these large increases, we need to ensure <span class="math notranslate nohighlight">\(\vvec{x}\)</span> is within the feasible set, effectively limiting the adversary’s ability to inflate the Lagrangian.</p>
-<p>The Lagrangian can be used to transform the <em>primal problem</em>, which is the original unconstrained objective from <a class="reference internal" href="#constr_objective">Definition 18</a>, to the dual problem.</p>
-<div class="proof definition admonition" id="dual_problem">
-<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Dual Problem)</p>
-<section class="definition-content" id="proof-content">
-<p>Given a primal optimization objective as defined in <a class="reference internal" href="#constr_objective">Definition 18</a>, we define the <strong>dual objective function</strong> <span class="math notranslate nohighlight">\(\mathcal{L}_{dual}\)</span>, returning the minimum (infimum to be precise) of the Lagrangian, given any <span class="math notranslate nohighlight">\(\bm\lambda,\bm\mu\geq\vvec{0}\)</span>:
-<div class="math notranslate nohighlight">
-\[\inf_{\vvec{x}\in\mathbb{R}^d}\mathcal{L}(\vvec{x},\bm\lambda,\bm\mu) = \mathcal{L}_{dual}(\bm\lambda,\bm\mu).\]</div>
- the <strong>dual optimization objective</strong> is defined as</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\max_{\bm\lambda, \bm\mu }&amp;\ \mathcal{L}_{dual}(\bm\lambda,\bm\mu) \\
-\text{s.t. }&amp; \bm\lambda\in\mathbb{R}^m, \bm\mu\in\mathbb{R}_+^l
-\end{align*}\]</div>
-</section>
-</div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The defintion of the dual objective uses the infimum and not the minimum, because there might be some cases where you don’t reach the minimum of the Lagrangian for any specific <span class="math notranslate nohighlight">\(\vvec{x}\)</span>, but only in a limit, e.g. <span class="math notranslate nohighlight">\(\vvec{x}\rightarrow\infty\)</span>. The infimum returns then the minimum in the limit. If you’re not familiar with the concept of the infimum, you can think of it as the minimum.</p>
-</div>
-<p>The solution to the dual objective are saddle points: points <span class="math notranslate nohighlight">\((\vvec{x},\bm\lambda,\bm\mu)\)</span> that minimize the Lagrangian subject to <span class="math notranslate nohighlight">\(\vvec{x}\)</span> and maximize it subject to <span class="math notranslate nohighlight">\((\bm\lambda,\bm\mu)\)</span>.</p>
-<p>We can easily show that the Lagrangian forms a lower bound of the objective function. For feasible <span class="math notranslate nohighlight">\(\vvec{x}\in\mathcal{C}\)</span> and <span class="math notranslate nohighlight">\(\bm\lambda\in\mathbb{R}^m,\bm\mu\in\mathbb{R}^l\)</span>, <span class="math notranslate nohighlight">\(\bm\mu\geq \vvec{0}\)</span> we have
-<div class="math notranslate nohighlight">
-\[\mathcal{L}(\vvec{x},\bm\lambda,\bm\mu) = f(\vvec{x}) - \sum_{i=1}^m\bm\lambda_i \underbrace{c_i(\vvec{x}}_{=0}) - \sum_{k=1}^l\underbrace{\bm\mu_k}_{\geq 0} \underbrace{g_k(\vvec{x})}_{\geq 0}\leq f(\vvec{x})\]</div>
-
-There are some cases, where <em>strong duality</em> holds, such that every minimizer of the primal objective is a maximizer of the dual objective <span class="math notranslate nohighlight">\(f(\vvec{x}^*)= \mathcal{L}_{dual}(\bm\lambda^*,\bm\mu^*)\)</span>. One of those cases is if we have a convex optimization objective, which will be discussed in the next section.</p>
-</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q3-cross-validation-folds">
+<h1>Q3 - Cross-Validation Folds<a class="headerlink" href="#q3-cross-validation-folds" title="Permalink to this headline">#</a></h1>
+<p>Run <code class="docutils literal notranslate"><span class="pre">student_starter.py</span></code>. It loads two datasets, “regression_iid” and “forecasting”, and visualizes three fold procedures: <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, and <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">forecasting</span></code> dataset is time-ordered: the model uses <span class="math notranslate nohighlight">\(x=y_t\)</span> to predict <span class="math notranslate nohighlight">\(y=y_{t+1}\)</span>. The goal is thus to predict the next value from the current value.</p>
+<p><strong>Question 1:</strong> Match each procedure to the correct description.</p>
+<p>Descriptions:</p>
+<ol class="simple">
+<li><p>Random split</p></li>
+<li><p>Systematic interleaved split</p></li>
+<li><p>Train on earlier samples and test on later ones.</p></li>
+</ol>
+<p>Answers:</p>
+<ol class="simple">
+<li><p>Procedure A is description: <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, or <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>Procedure B is description: <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, or <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>Procedure C is description: <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, or <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+</ol>
+<p><strong>Question 2</strong></p>
+<p>For regression_iid, the rows may be treated as independent samples with no meaningful time order.</p>
+<p>Which fold procedure(s) would you use to obtain a reliable MSE estimate? Select all that apply: <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<p><strong>Question 3</strong></p>
+<p>Which fold procedure(s) would you use to obtain a reliable MSE estimate? Select all that apply: <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<p>==Answers==</p>
+<ol class="simple">
+<li><p>A -&gt; 1, B -&gt; 2, C -&gt; 3</p></li>
+<li><p>A, B</p></li>
+<li><p>C</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -786,20 +977,6 @@ There are some cases, where <em>strong duality</em> holds, such that every minim
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="optimization.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Optimization</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="optimization_convex.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Convex Optimization</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
